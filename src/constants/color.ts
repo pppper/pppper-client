@@ -11,4 +11,5 @@ export const defaultColors = {
   gray6: '#EFEEF3',
   gray7: '#F7F7F8',
   white: '#ffffff',
+  red1: '#FF3232',
 };
