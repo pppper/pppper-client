@@ -11,6 +11,7 @@ export const CustomButton = styled.button<ButtonProps>`
   border-radius: 4px;
   border: 0px;
   ${(props) => (props.outlined ? outlinedButtonStyle : filledButtonStyle)}
+  transition: color, background-color 0.4s ease;
 `;
 
 interface FilledButtonProps {
@@ -21,8 +22,6 @@ const filledButtonStyle = css<FilledButtonProps>`
   background-color: ${(props) =>
     props.active ? defaultColors.primary1 : defaultColors.gray3};
   color: ${defaultColors.white};
-
-  transition: color, background-color 0.4s ease;
 `;
 
 interface OutlinedButtonProps {
@@ -35,4 +34,16 @@ const outlinedButtonStyle = css<OutlinedButtonProps>`
   border: 1px solid;
   border-color: ${(props) =>
     props.active ? defaultColors.primary1 : defaultColors.gray3};
+
+  &:hover {
+    ${(props) =>
+      props.active
+        ? css`
+            background-color: ${props.active
+              ? defaultColors.primary1
+              : defaultColors.gray3};
+            color: ${defaultColors.white};
+          `
+        : null}
+  }
 `;
