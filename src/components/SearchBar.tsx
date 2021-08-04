@@ -34,7 +34,7 @@ const Container = styled.div<{ length: SearchBarLength }>`
   flex-direction: row;
   align-items: center;
   border-radius: 4px;
-  background-color: ${(props) => props.theme.defaultColors.gray7};
+  background-color: ${(props) => props.theme.colors.gray7};
   border: 0;
 
   transition: width 0.4s ease;
@@ -48,7 +48,7 @@ const SearchIcon = styled.img`
 const SearchInput = styled.input`
   border: 0;
   background-color: rgba(255, 255, 255, 0);
-  color: ${(props) => props.theme.defaultColors.black};
+  color: ${(props) => props.theme.colors.black};
   font-size: 15px;
   line-height: 22px;
   margin: 5px 0px;
@@ -56,7 +56,7 @@ const SearchInput = styled.input`
   flex-direction: row;
   align-items: flex-start;
   &:placeholder {
-    color: ${(props) => props.theme.defaultColors.gray3};
+    color: ${(props) => props.theme.colors.gray3};
   }
   &:focus {
     outline: none;

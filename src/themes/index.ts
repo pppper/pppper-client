@@ -1,4 +1,6 @@
-export const defaultColors = {
+import { DefaultTheme, IThemeColors } from 'styled-components';
+
+const defaultThemeColors: IThemeColors = {
   primary1: '#6129FF',
   primary2: '#7A59FF',
   primary3: '#A697FF',
@@ -12,4 +14,7 @@ export const defaultColors = {
   gray7: '#F7F7F8',
   white: '#ffffff',
   red1: '#FF3232',
+};
+export const lightTheme: DefaultTheme = {
+  colors: defaultThemeColors,
 };

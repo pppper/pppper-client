@@ -102,8 +102,8 @@ const Button = styled.button`
 `;
 const ButtonImage = styled.img``;
 const Count = styled.div`
-  background: ${(props) => props.theme.defaultColors.white};
-  border: 1px solid ${(props) => props.theme.defaultColors.gray6};
+  background: ${(props) => props.theme.colors.white};
+  border: 1px solid ${(props) => props.theme.colors.gray6};
   width: 32px;
   height: 23px;
   border-radius: 2px;
