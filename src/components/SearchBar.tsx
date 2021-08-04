@@ -1,5 +1,4 @@
-import { defaultColors } from '../constants/color';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { useState } from 'react';
 
 type SearchBarLength = 'long' | 'short';
@@ -35,7 +34,7 @@ const Container = styled.div<{ length: SearchBarLength }>`
   flex-direction: row;
   align-items: center;
   border-radius: 4px;
-  background-color: ${defaultColors.gray7};
+  background-color: ${(props) => props.theme.defaultColors.gray7};
   border: 0;
 
   transition: width 0.4s ease;
@@ -49,7 +48,7 @@ const SearchIcon = styled.img`
 const SearchInput = styled.input`
   border: 0;
   background-color: rgba(255, 255, 255, 0);
-  color: ${defaultColors.black};
+  color: ${(props) => props.theme.defaultColors.black};
   font-size: 15px;
   line-height: 22px;
   margin: 5px 0px;
@@ -57,7 +56,7 @@ const SearchInput = styled.input`
   flex-direction: row;
   align-items: flex-start;
   &:placeholder {
-    color: ${defaultColors.gray3};
+    color: ${(props) => props.theme.defaultColors.gray3};
   }
   &:focus {
     outline: none;

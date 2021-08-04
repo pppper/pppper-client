@@ -1,5 +1,5 @@
 import { defaultColors } from '../constants/color';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 interface TextInputProps {
   errorOcurred?: boolean;

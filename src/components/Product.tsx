@@ -1,4 +1,3 @@
-import { defaultColors } from '../constants/color';
 import styled, { css } from 'styled-components';
 import { useState } from 'react';
 import { CustomButton } from './Button';
@@ -103,8 +102,8 @@ const Button = styled.button`
 `;
 const ButtonImage = styled.img``;
 const Count = styled.div`
-  background: ${defaultColors.white};
-  border: 1px solid ${defaultColors.gray6};
+  background: ${(props) => props.theme.defaultColors.white};
+  border: 1px solid ${(props) => props.theme.defaultColors.gray6};
   width: 32px;
   height: 23px;
   border-radius: 2px;
