@@ -1,4 +1,3 @@
-import { defaultColors } from '../constants/color';
 import styled, { css } from 'styled-components';
 
 interface ButtonProps {
@@ -20,29 +19,29 @@ interface FilledButtonProps {
 
 const filledButtonStyle = css<FilledButtonProps>`
   background-color: ${(props) =>
-    props.active ? defaultColors.primary1 : defaultColors.gray3};
-  color: ${defaultColors.white};
+    props.active ? props.theme.colors.primary1 : props.theme.colors.gray3};
+  color: ${(props) => props.theme.colors.white};
 `;
 
 interface OutlinedButtonProps {
   active?: boolean;
 }
 const outlinedButtonStyle = css<OutlinedButtonProps>`
-  background-color: ${defaultColors.white};
+  background-color: ${(props) => props.theme.colors.white};
   color: ${(props) =>
-    props.active ? defaultColors.primary1 : defaultColors.gray2};
+    props.active ? props.theme.colors.primary1 : props.theme.colors.gray2};
   border: 1px solid;
   border-color: ${(props) =>
-    props.active ? defaultColors.primary1 : defaultColors.gray3};
+    props.active ? props.theme.colors.primary1 : props.theme.colors.gray3};
 
   &:hover {
     ${(props) =>
       props.active
         ? css`
             background-color: ${props.active
-              ? defaultColors.primary1
-              : defaultColors.gray3};
-            color: ${defaultColors.white};
+              ? props.theme.colors.primary1
+              : props.theme.colors.gray3};
+            color: ${(props) => props.theme.colors.white};
           `
         : null}
   }

@@ -1,5 +1,4 @@
-import { defaultColors } from '../constants/color';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 interface TextInputProps {
   errorOcurred?: boolean;
@@ -15,16 +14,15 @@ export const TextInput = styled.input<TextInputProps>`
   padding: 13px 10px 11px;
   border-radius: 4px;
   box-sizing: border-box;
-  color: ${defaultColors.black}
-
-  background-color: ${defaultColors.white};
+  color: ${(props) => props.theme.colors.black};
+  background-color: ${(props) => props.theme.colors.white};
   border: 0.5px solid;
   border-color: ${(props) =>
-    props.errorOcurred ? defaultColors.red1 : defaultColors.gray4};
+    props.errorOcurred ? props.theme.colors.red1 : props.theme.colors.gray4};
   &:placeholder {
-    color: ${defaultColors.gray3};
+    color: ${(props) => props.theme.colors.gray3};
   }
-  &:focus{
-    outline:none;
+  &:focus {
+    outline: none;
   }
 `;
