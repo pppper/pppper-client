@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import App from './App';
+import { AlertContextProvider } from './providers/AlertProvider';
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -14,7 +15,9 @@ ReactDOM.render(
   <React.StrictMode>
     <GlobalStyle />
     <BrowserRouter>
-      <App />
+      <AlertContextProvider>
+        <App />
+      </AlertContextProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
