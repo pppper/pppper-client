@@ -1,26 +1,7 @@
 import { IonAlert } from '@ionic/react';
-import { createContext, useContext, useState } from 'react';
-
-interface IAlertData {
-  header: string;
-  subtitle: string | null;
-  message: string | null;
-  buttons: string[];
-}
-
-export interface IAlertContext {
-  isAlertOpen: boolean;
-  alertData: IAlertData;
-  showAlert: (IAlertData) => void;
-  hideAlert: () => void;
-}
-
-export const AlertContext = createContext<IAlertContext>({
-  isAlertOpen: null,
-  alertData: null,
-  showAlert: null,
-  hideAlert: null,
-});
+import { useState } from 'react';
+import { AlertContext } from '../contexts/AlertContext';
+import { IAlertData } from '../types/alert';
 
 export const AlertContextProvider = ({ children }) => {
   const [isAlertOpen, setIsAlertOpen] = useState<boolean>(false);
@@ -55,10 +36,4 @@ export const AlertContextProvider = ({ children }) => {
       ></IonAlert>
     </AlertContext.Provider>
   );
-};
-
-export const useAlert = (): IAlertContext => {
-  const { isAlertOpen, alertData, showAlert, hideAlert } =
-    useContext(AlertContext);
-  return { isAlertOpen, alertData, showAlert, hideAlert };
 };
