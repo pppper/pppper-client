@@ -6,6 +6,8 @@ import { Product } from './components/Product';
 import { SearchBar } from './components/SearchBar';
 import { TextInput } from './components/TextInput';
 import { lightTheme } from './themes';
+import { Route } from 'react-router-dom';
+import StoreHomePage from './pages/StoreHomePage';
 
 function App() {
   const [theme, setTheme] = useState<DefaultTheme>(lightTheme);
@@ -13,7 +15,10 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <CustomButton
+      <Route path="/store" exact={true}>
+        <StoreHomePage />
+      </Route>
+      {/* <CustomButton
         active={true}
         outlined={true}
         onClick={() => {
@@ -29,7 +34,7 @@ function App() {
       </CustomButton>
       <TextInput placeholder="dfdf"></TextInput>
       <SearchBar length="long" />
-      <Product />
+      <Product /> */}
     </ThemeProvider>
   );
 }
