@@ -43,6 +43,9 @@ function App() {
       <TextInput placeholder="dfdf"></TextInput>
       <SearchBar length="long" />
       <Product /> */}
+      <Route path="/test">
+        <Product />
+      </Route>
     </ThemeProvider>
   );
 }
