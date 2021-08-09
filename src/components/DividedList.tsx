@@ -36,6 +36,6 @@ const ListLabel = styled.div`
   font-style: normal;
   line-height: 22px;
   text-align: left;
-  color: #000000;
+  color: ${(props) => props.theme.colors.black};
   margin: 10px 0px 9.5px;
 `;

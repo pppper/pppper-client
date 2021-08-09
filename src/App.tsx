@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
-import { useAlert } from './hooks/useAlert';
+import { Route } from 'react-router-dom';
+
 import { CustomButton } from './components/Button';
 import { Product } from './components/Product';
 import { SearchBar } from './components/SearchBar';
 import { TextInput } from './components/TextInput';
-import { lightTheme } from './themes';
-import { Route } from 'react-router-dom';
+
 import StoreHomePage from './pages/StoreHomePage';
+import StoreCategoryPage from './pages/StoreCategoryPage';
+
+import { useAlert } from './hooks/useAlert';
+
+import { lightTheme } from './styles/theme';
 
 function App() {
   const [theme, setTheme] = useState<DefaultTheme>(lightTheme);
@@ -15,8 +20,11 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Route path="/store" exact={true}>
+      <Route path="/store" exact>
         <StoreHomePage />
+      </Route>
+      <Route path="/store/category" exact>
+        <StoreCategoryPage />
       </Route>
       {/* <CustomButton
         active={true}

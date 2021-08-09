@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import { DividedList } from '../components/DividedList';
-import { IonSearchbar } from '@ionic/react';
 import { BrandIntroduction } from '../components/BrandIntroduction';
 import { Margin } from '../components/Margin';
+
+import { IonSearchbar } from '@ionic/react';
 
 interface IStoreHomeProps {}
 
@@ -42,7 +44,7 @@ const StoreTitle = styled.div`
   font-weight: 900;
   font-style: normal;
   text-align: left;
-  color: #000000;
+  color: ${(props) => props.theme.colors.black};
   margin-bottom: 19.5px;
 `;
 

@@ -24,7 +24,7 @@ export const BrandIntroduction: React.FC<BrandIntroProps> = (props) => {
       </Content>
       <Margin margin={17} />
       <ButtonContainer>
-        <MoreButton active={false} outlined={true}>
+        <MoreButton active={false} outlined>
           상품 더보기
         </MoreButton>
       </ButtonContainer>
