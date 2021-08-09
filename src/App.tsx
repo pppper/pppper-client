@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
-import { useAlert } from './hooks/useAlert';
+import { Route } from 'react-router-dom';
+
 import { CustomButton } from './components/Button';
 import { Product } from './components/Product';
 import { SearchBar } from './components/SearchBar';
 import { TextInput } from './components/TextInput';
-import { lightTheme } from './themes';
+
+import StoreHomePage from './pages/StoreHomePage';
+import StoreCategoryPage from './pages/StoreCategoryPage';
+
+import { useAlert } from './hooks/useAlert';
+
+import { lightTheme } from './styles/theme';
 
 function App() {
   const [theme, setTheme] = useState<DefaultTheme>(lightTheme);
@@ -13,7 +20,13 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <CustomButton
+      <Route path="/store" exact>
+        <StoreHomePage />
+      </Route>
+      <Route path="/store/category" exact>
+        <StoreCategoryPage />
+      </Route>
+      {/* <CustomButton
         active={true}
         outlined={true}
         onClick={() => {
@@ -29,7 +42,7 @@ function App() {
       </CustomButton>
       <TextInput placeholder="dfdf"></TextInput>
       <SearchBar length="long" />
-      <Product />
+      <Product /> */}
     </ThemeProvider>
   );
 }

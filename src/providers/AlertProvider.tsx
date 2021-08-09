@@ -1,6 +1,8 @@
 import { IonAlert } from '@ionic/react';
 import { useState } from 'react';
+
 import { AlertContext } from '../contexts/AlertContext';
+
 import { IAlertData } from '../types/alert';
 
 export const AlertContextProvider = ({ children }) => {

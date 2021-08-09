@@ -1,15 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { createGlobalStyle } from 'styled-components';
-import App from './App';
-import { AlertContextProvider } from './providers/AlertProvider';
 
-const GlobalStyle = createGlobalStyle`
-  *{
-    box-sizing:border-box;
-  }
-`;
+import App from './App';
+
+import { GlobalStyle } from './styles/Globalstyle';
+
+import { AlertContextProvider } from './providers/AlertProvider';
 
 ReactDOM.render(
   <React.StrictMode>
