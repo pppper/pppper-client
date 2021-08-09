@@ -10,7 +10,7 @@ import { TextInput } from './components/TextInput';
 import StoreHomePage from './pages/StoreHomePage';
 import StoreCategoryPage from './pages/StoreCategoryPage';
 
-import { useAlert } from './hooks/useAlert';
+import { useAlert } from './lib/hooks/useAlert';
 
 import { lightTheme } from './styles/theme';
 

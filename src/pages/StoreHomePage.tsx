@@ -19,7 +19,6 @@ export default function StoreHomePage(props: IStoreHomeProps) {
         <IonSearchbar
           className="store-search-bar"
           show-clear-button="always"
-          type="tel"
           placeholder=""
         />
         <Margin margin={35} />
@@ -32,17 +31,6 @@ export default function StoreHomePage(props: IStoreHomeProps) {
     </Container>
   );
 }
-
-const SearchBar = styled(IonSearchbar)`
-  .searchbar-input-container.sc-ion-searchbar-ios {
-    max-height: 30px;
-  }
-  max-height: 30px;
-  .searchbar-input.sc-ion-searchbar-ios {
-    background-color: ${(props) => props.theme.colors.gray7};
-    border-radius: 15px;
-  }
-`;
 
 const Container = styled.div`
   .store-flex-column {

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { IAlertContext } from '../types/alert';
+import { IAlertContext } from '../../types/alert';
 
 import { AlertContext } from '../contexts/AlertContext';
 

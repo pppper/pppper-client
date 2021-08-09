@@ -6,7 +6,7 @@ import App from './App';
 
 import { GlobalStyle } from './styles/Globalstyle';
 
-import { AlertContextProvider } from './providers/AlertProvider';
+import { AlertContextProvider } from './lib/providers/AlertProvider';
 
 ReactDOM.render(
   <React.StrictMode>

@@ -38,6 +38,7 @@ const ListContainer = styled.div`
       text-align: left;
       color: ${(props) => props.theme.colors.black};
       margin: 10px 0px 9.5px;
+      padding-left: 5px;
     }
   }
 `;
