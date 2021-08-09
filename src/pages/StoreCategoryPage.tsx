@@ -29,13 +29,13 @@ export default function StoreCategoryPage(props: StoreCategoryProps) {
   return (
     <Container>
       <Margin margin={12} />
-      <div className="title">카테고리</div>
+      <div className="category-section-title">카테고리</div>
       <Margin margin={21.5} />
       {parentCategory &&
         parentCategory.map((category) => {
           return (
             <div
-              className="label"
+              className="category-label"
               onClick={handleLabelClicked}
               id={category.id}
               key={category.id}
@@ -47,7 +47,7 @@ export default function StoreCategoryPage(props: StoreCategoryProps) {
       {childCategories &&
         childCategories.map((category) => {
           return (
-            <div className="label" key={category.id}>
+            <div className="category-label" key={category.id}>
               {category.title}
             </div>
           );
@@ -57,7 +57,7 @@ export default function StoreCategoryPage(props: StoreCategoryProps) {
 }
 
 const Container = styled.div`
-  .title {
+  .category-section-title {
     font-size: 20px;
     font-weight: 600;
     font-style: normal;
@@ -65,6 +65,6 @@ const Container = styled.div`
     text-align: center;
     color: ${(props) => props.theme.colors.black};
   }
-  .label {
+  .category-label {
   }
 `;

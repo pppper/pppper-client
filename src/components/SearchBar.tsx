@@ -68,12 +68,6 @@ const Container = styled.div<{ length: SearchBarLength }>`
     }
     flex: 1;
   }
-  .search-input::placeholder {
-    color: ${(props) => props.theme.colors.gray3};
-  }
-  .search-input::focus {
-    outline: none;
-  }
 
   .clear-button {
     background-color: rgba(255, 255, 255, 0);
@@ -81,8 +75,9 @@ const Container = styled.div<{ length: SearchBarLength }>`
     padding: 0;
     display: flex;
     align-items: center;
-  }
-  .clear-button-icon {
-    margin-right: 10px;
+
+    .clear-button-icon {
+      margin-right: 10px;
+    }
   }
 `;

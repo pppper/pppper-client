@@ -10,8 +10,8 @@ export const DividedList: React.FC<DividedListProps> = (props) => {
     <ListContainer>
       {list.map((label) => {
         return (
-          <div className="list-component" key={label}>
-            <div className="label">{label}</div>
+          <div className="divided-list-component" key={label}>
+            <div className="divided-label">{label}</div>
           </div>
         );
       })}
@@ -23,20 +23,21 @@ const ListContainer = styled.div`
   display: table;
   border-collapse: collapse;
 
-  .list-component {
+  .divided-list-component {
     display: table-row;
     border-top: 0.5px solid;
     border-bottom: 0.5px solid;
     border-color: ${(props) => props.theme.colors.gray4};
-  }
-  .label {
-    font-family: 'SpoqaHanSansNeo';
-    font-size: 15px;
-    font-weight: bold;
-    font-style: normal;
-    line-height: 22px;
-    text-align: left;
-    color: ${(props) => props.theme.colors.black};
-    margin: 10px 0px 9.5px;
+
+    .divided-label {
+      font-family: 'SpoqaHanSansNeo';
+      font-size: 15px;
+      font-weight: bold;
+      font-style: normal;
+      line-height: 22px;
+      text-align: left;
+      color: ${(props) => props.theme.colors.black};
+      margin: 10px 0px 9.5px;
+    }
   }
 `;

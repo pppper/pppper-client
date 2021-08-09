@@ -12,18 +12,18 @@ interface IStoreHomeProps {}
 export default function StoreHomePage(props: IStoreHomeProps) {
   return (
     <Container>
-      <div className="flex-column store-header">
-        <div className="section-title">스토어</div>
+      <div className="store-flex-column store-header">
+        <div className="store-section-title">스토어</div>
         <DividedList list={['카테고리', '브랜드']} />
         <Margin margin={24} />
         <IonSearchbar
-          className="search-bar"
+          className="store-search-bar"
           show-clear-button="always"
           type="tel"
           placeholder=""
         />
         <Margin margin={35} />
-        <div className="sub-section-title">BRAND</div>
+        <div className="store-subsection-title">BRAND</div>
       </div>
       <BrandIntroduction />
       <BrandIntroduction />
@@ -45,7 +45,7 @@ const SearchBar = styled(IonSearchbar)`
 `;
 
 const Container = styled.div`
-  .flex-column {
+  .store-flex-column {
     display: flex;
     flex-direction: column;
   }
@@ -54,7 +54,7 @@ const Container = styled.div`
     border-bottom: 2px solid;
     border-color: ${(props) => props.theme.colors.gray4};
   }
-  .section-title {
+  .store-section-title {
     font-size: 23px;
     line-height: 31px;
     letter-spacing: 1.15px;
@@ -65,7 +65,7 @@ const Container = styled.div`
     color: ${(props) => props.theme.colors.black};
     margin-bottom: 19.5px;
   }
-  .search-bar {
+  .store-search-bar {
     .searchbar-input-container.sc-ion-searchbar-ios {
       max-height: 30px;
     }
@@ -75,7 +75,7 @@ const Container = styled.div`
       border-radius: 15px;
     }
   }
-  .sub-section-title {
+  .store-subsection-title {
     font-size: 20px;
     font-weight: normal;
     font-style: normal;

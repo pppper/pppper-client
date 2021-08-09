@@ -45,6 +45,7 @@ function App() {
       <Product /> */}
       <Route path="/test">
         <Product />
+        <SearchBar />
       </Route>
     </ThemeProvider>
   );
