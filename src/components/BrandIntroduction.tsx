@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+
 import { CustomButton } from './Button';
 import { Margin } from './Margin';
+
+import { userActions } from '../modules/slices/user';
+import { useAppSelector } from '../modules/hooks/useAppSelector';
 
 interface BrandIntroProps {
   title?: string;
@@ -10,6 +15,22 @@ interface BrandIntroProps {
   mainImage?: URL;
 }
 export const BrandIntroduction: React.FC<BrandIntroProps> = (props) => {
+  const dispatch = useDispatch();
+  const userState = useAppSelector((state) => state.user);
+
+  console.log('userState', userState);
+
+  const handleReduxTest = () => {
+    dispatch(
+      userActions.setUserInfo({
+        id: 1,
+        name: 'eun',
+        email: 'koeun0712@ewhain.net',
+        profileImage: '',
+      })
+    );
+  };
+
   return (
     <Container>
       <div className="brand-introduction-title">DEEPCOLLECTIVE</div>
