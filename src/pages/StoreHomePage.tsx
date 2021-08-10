@@ -11,42 +11,27 @@ interface IStoreHomeProps {}
 
 export default function StoreHomePage(props: IStoreHomeProps) {
   return (
-    <>
-      <StoreHeader>
-        <StoreTitle>스토어</StoreTitle>
+    <Container>
+      <div className="store-header-wrapper store-sort-column">
+        <div className="store-section-title">스토어</div>
         <DividedList list={['카테고리', '브랜드']} />
         <Margin margin={24} />
-        <SearchBar show-clear-button="always" type="tel" placeholder="" />
+        <IonSearchbar
+          className="store-search-bar"
+          show-clear-button="always"
+          type="tel"
+          placeholder=""
+        />
         <Margin margin={35} />
-        <SubTitle>BRAND</SubTitle>
-      </StoreHeader>
+        <div className="store-subsection-title">BRAND</div>
+      </div>
       <BrandIntroduction />
       <BrandIntroduction />
       <BrandIntroduction />
       <BrandIntroduction />
-    </>
+    </Container>
   );
 }
-
-const StoreHeader = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 9px 27px 6px 28px;
-  border-bottom: 2px solid;
-  border-color: ${(props) => props.theme.colors.gray4};
-`;
-
-const StoreTitle = styled.div`
-  font-size: 23px;
-  line-height: 31px;
-  letter-spacing: 1.15px;
-  font-family: 'Pretendard';
-  font-weight: 900;
-  font-style: normal;
-  text-align: left;
-  color: ${(props) => props.theme.colors.black};
-  margin-bottom: 19.5px;
-`;
 
 const SearchBar = styled(IonSearchbar)`
   .searchbar-input-container.sc-ion-searchbar-ios {
@@ -58,12 +43,44 @@ const SearchBar = styled(IonSearchbar)`
     border-radius: 15px;
   }
 `;
-const SubTitle = styled.div`
-  font-family: 'Pretendard';
-  font-size: 20px;
-  font-weight: normal;
-  font-style: normal;
-  line-height: 26px;
-  text-align: center;
-  color: ${(props) => props.theme.colors.black};
+
+const Container = styled.div`
+  .store-sort-column {
+    display: flex;
+    flex-direction: column;
+  }
+  .store-header-wrapper {
+    padding: 9px 27px 6px 28px;
+    border-bottom: 2px solid;
+    border-color: ${(props) => props.theme.colors.gray4};
+  }
+  .store-section-title {
+    font-size: 23px;
+    line-height: 31px;
+    letter-spacing: 1.15px;
+    font-family: 'Pretendard';
+    font-weight: 900;
+    font-style: normal;
+    text-align: left;
+    color: ${(props) => props.theme.colors.black};
+    margin-bottom: 19.5px;
+  }
+  .store-search-bar {
+    .searchbar-input-container.sc-ion-searchbar-ios {
+      max-height: 30px;
+    }
+    max-height: 30px;
+    .searchbar-input.sc-ion-searchbar-ios {
+      background-color: ${(props) => props.theme.colors.gray7};
+      border-radius: 15px;
+    }
+  }
+  .store-subsection-title {
+    font-size: 20px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 26px;
+    text-align: center;
+    color: ${(props) => props.theme.colors.black};
+  }
 `;

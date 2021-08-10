@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { AlertContext } from '../contexts/AlertContext';
 
-import { IAlertData } from '../types/alert';
+import { IAlertData } from '../../types/alert';
 
 export const AlertContextProvider = ({ children }) => {
   const [isAlertOpen, setIsAlertOpen] = useState<boolean>(false);

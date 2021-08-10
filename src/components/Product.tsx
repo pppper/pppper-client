@@ -5,116 +5,120 @@ interface ProductProps {}
 
 export const Product: React.FC<ProductProps> = (props) => {
   return (
-    <Row>
-      <CheckContainer>
+    <ProductContainer>
+      <div>
         <input type="checkbox" />
-      </CheckContainer>
-      <ImageColumn>
-        <ProductImage />
-        <ButtonRow>
-          <Button>
-            <ButtonImage src={process.env.PUBLIC_URL + '/decrement.svg'} />
-          </Button>
-          <Count>
-            <CountText>1</CountText>
-          </Count>
-          <Button>
-            <ButtonImage src={process.env.PUBLIC_URL + '/increment.svg'} />
-          </Button>
-        </ButtonRow>
-      </ImageColumn>
-      <ProdcutInformationContainer>
-        <Row>
-          <ProuductTitle>
+      </div>
+      <div className="product-image-container product-flex-column">
+        <img className="product-main-image" />
+        <div className="image-button-container product-flex-row">
+          <button className="image-button">
+            <img src={process.env.PUBLIC_URL + '/decrement.svg'} />
+          </button>
+          <div className="product-count">
+            <div>1</div>
+          </div>
+          <button className="image-button">
+            <img src={process.env.PUBLIC_URL + '/increment.svg'} />
+          </button>
+        </div>
+      </div>
+      <div className="product-information-container product-flex-column">
+        <div className="product-flex-row">
+          <div className="product-title">
             productnamethisisneverthatdfasdfasdfascasdfascsd
-          </ProuductTitle>
-          <DeleteButton outlined={true} active={false}>
+          </div>
+          <CustomButton
+            className="product-delete-button"
+            outlined
+            active={false}
+          >
             삭제
-          </DeleteButton>
-        </Row>
-        <MaxRow>
-          <ProductOptionStatus>
+          </CustomButton>
+        </div>
+        <div className="product-option-status-wrapper product-flex-row ">
+          <div className="product-option-status product-flex-column">
             <div>color</div>
             <div>status</div>
-          </ProductOptionStatus>
-          <Price>price</Price>
-        </MaxRow>
-      </ProdcutInformationContainer>
-    </Row>
+          </div>
+          <div className="product-price">price</div>
+        </div>
+      </div>
+    </ProductContainer>
   );
 };
 
-const ProductImage = styled.img`
-  flex: 1;
-  width: 90px;
-  height: 106px;
-`;
-const CheckContainer = styled.div``;
-
-const Row = styled.div`
-  width: 100%;
+const ProductContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-`;
-
-const MaxRow = styled(Row)`
-  height: 100%;
-`;
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const ProdcutInformationContainer = styled(Column)`
   width: 100%;
-  margin-top: 5px;
-`;
-const ProuductTitle = styled.div`
-  margin-right: 10px;
-  word-break: break-all;
-`;
-const Price = styled.div`
-  display: flex;
-  align-items: flex-end;
-`;
-const ProductOptionStatus = styled(Column)`
-  width: 100%;
-  justify-content: space-around; // space-between
-`;
 
-const DeleteButton = styled(CustomButton)`
-  border-radius: 2px;
-  width: 33px;
-  height: 20px;
-  font-size: 9px;
-  line-height: 15px;
-  white-space: pre;
-`;
+  .product-option-status-wrapper {
+    height: 100%;
+  }
+  .product-sort-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .product-sort-column {
+    display: flex;
+    flex-direction: column;
+  }
+  .product-information-container {
+    margin-top: 5px;
 
-const Button = styled.button`
-  background-color: rgba(255, 255, 255, 0);
-  border: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-`;
-const ButtonImage = styled.img``;
-const Count = styled.div`
-  background: ${(props) => props.theme.colors.white};
-  border: 1px solid ${(props) => props.theme.colors.gray6};
-  width: 32px;
-  height: 23px;
-  border-radius: 2px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-`;
-const CountText = styled.div``;
-const ButtonRow = styled(Row)`
-  margin-top: 4px;
-  justify-content: space-evenly;
-`;
-const ImageColumn = styled(Column)`
-  margin-right: 7px;
+    .product-title {
+      margin-right: 10px;
+      word-break: break-all;
+    }
+    .product-delete-button {
+      border-radius: 2px;
+      width: 33px;
+      height: 20px;
+      font-size: 9px;
+      line-height: 15px;
+      white-space: pre;
+    }
+    .product-price {
+      display: flex;
+      align-items: flex-end;
+    }
+  }
+
+  .product-option-status {
+    justify-content: space-around;
+    width: 100%;
+  }
+  .product-image-container {
+    margin-right: 7px;
+    .product-main-image {
+      flex: 1;
+      width: 90px;
+      min-height: 106px;
+    }
+  }
+  .image-button-container {
+    margin-top: 4px;
+    justify-content: space-evenly;
+
+    .image-button {
+      background-color: rgba(255, 255, 255, 0);
+      border: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+    }
+    .product-count {
+      background: ${(props) => props.theme.colors.white};
+      border: 1px solid ${(props) => props.theme.colors.gray6};
+      width: 32px;
+      height: 23px;
+      border-radius: 2px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+  }
 `;
