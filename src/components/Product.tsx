@@ -9,9 +9,9 @@ export const Product: React.FC<ProductProps> = (props) => {
       <div>
         <input type="checkbox" />
       </div>
-      <div className="product-flex-column product-image-container">
+      <div className="product-image-container product-flex-column">
         <img className="product-main-image" />
-        <div className="product-flex-row image-button-container">
+        <div className="image-button-container product-flex-row">
           <button className="image-button">
             <img src={process.env.PUBLIC_URL + '/decrement.svg'} />
           </button>
@@ -23,17 +23,21 @@ export const Product: React.FC<ProductProps> = (props) => {
           </button>
         </div>
       </div>
-      <div className="product-flex-column product-information-container">
+      <div className="product-information-container product-flex-column">
         <div className="product-flex-row">
           <div className="product-title">
             productnamethisisneverthatdfasdfasdfascasdfascsd
           </div>
-          <CustomButton className="delete-button" outlined active={false}>
+          <CustomButton
+            className="product-delete-button"
+            outlined
+            active={false}
+          >
             삭제
           </CustomButton>
         </div>
-        <div className="product-flex-row product-max-height">
-          <div className="product-flex-column product-option-status">
+        <div className="product-option-status-wrapper product-flex-row ">
+          <div className="product-option-status product-flex-column">
             <div>color</div>
             <div>status</div>
           </div>
@@ -50,15 +54,15 @@ const ProductContainer = styled.div`
   justify-content: center;
   width: 100%;
 
-  .product-max-height {
+  .product-option-status-wrapper {
     height: 100%;
   }
-  .product-flex-row {
+  .product-sort-row {
     display: flex;
     flex-direction: row;
     justify-content: center;
   }
-  .product-flex-column {
+  .product-sort-column {
     display: flex;
     flex-direction: column;
   }
@@ -69,7 +73,7 @@ const ProductContainer = styled.div`
       margin-right: 10px;
       word-break: break-all;
     }
-    .delete-button {
+    .product-delete-button {
       border-radius: 2px;
       width: 33px;
       height: 20px;
