@@ -6,7 +6,7 @@ import { CustomButton } from './Button';
 import { Margin } from './Margin';
 
 import { userActions } from '../modules/slices/user';
-import { useAppSelector } from '../modules/hooks/useAppSelector';
+import { useAppSelector } from '../lib/hooks/useAppSelector';
 
 interface BrandIntroProps {
   title?: string;
