@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import { CategoryFetchers } from '../fetchers/categories';
+
 import { useHistory } from 'react-router-dom';
+
+import { ReactComponent as OpenCloseIcon } from '../assets/icon/category/category_open_close_icon.svg';
 
 interface CategoryProps {
   id: number;
@@ -28,16 +31,24 @@ export default function Category(props: CategoryProps) {
     setIsSelected(!isSelected);
   }
   return (
-    <StyledCategory key={id} onClick={handleCategoryClicked}>
+    <StyledCategory
+      key={id}
+      onClick={handleCategoryClicked}
+      isSelected={isSelected}
+    >
       <div className="category-label" id={id.toString()}>
         {title}
+        <OpenCloseIcon className="open-close-effect" />
       </div>
       {isSelected ? <SubCategory categories={childCategories} /> : null}
     </StyledCategory>
   );
 }
 
-const StyledCategory = styled.div`
+interface IStyledCategory {
+  isSelected: boolean;
+}
+const StyledCategory = styled.div<IStyledCategory>`
   display: table-row;
   border-top: 0.5px solid;
   border-bottom: 0.5px solid;
@@ -45,14 +56,22 @@ const StyledCategory = styled.div`
 
   .category-label {
     font-family: 'SpoqaHanSansNeo';
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     font-style: normal;
     line-height: 22px;
     text-align: left;
     color: ${(props) => props.theme.colors.black};
-    margin: 10px 0px 9.5px;
+    margin: 11px 0px 10px;
     padding-left: 5px;
+    padding-right: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .open-close-effect {
+    transition: transform 0.3s;
+    transform: ${(props) => (props.isSelected ? 'rotate(45deg)' : '')};
   }
 `;
 
@@ -62,8 +81,9 @@ interface SubCategoryProps {
 const SubCategory: React.FC<SubCategoryProps> = (props) => {
   const history = useHistory();
   const { categories } = props;
-  function handleCategoryClicked() {
-    console.log(1);
+  function handleCategoryClicked(e) {
+    console.log(e.target.id);
+    history.push('/', {});
   }
   return (
     <StyledSubCategory>
@@ -94,7 +114,7 @@ const StyledSubCategory = styled.div`
   }
   .subcategory-label {
     font-size: 14px;
-    font-weight: normal;
+    font-weight: 400;
     font-stretch: normal;
     font-style: normal;
     line-height: 20px;
