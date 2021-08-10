@@ -18,4 +18,12 @@ export const GlobalStyle = createGlobalStyle`
   input::-webkit-search-results-decoration{
 	display:none;
   }
+  .flex-row{
+    display: flex;
+    flex-direction: row;
+  }
+  .flex-col{
+    display: flex;
+    flex-direction: column;
+  }
 `;
