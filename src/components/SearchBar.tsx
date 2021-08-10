@@ -24,9 +24,9 @@ export const SearchBar: React.FC<SearchBarProps> = (props) => {
         onChange={(e) => setSearchValue(e.target.value)}
         value={searchValue}
       />
-      <button className="clear-button" onClick={handleClearButtonClick}>
+      <button className="search-clear-button" onClick={handleClearButtonClick}>
         <img
-          className="clear-button-icon"
+          className="search-clear-button-icon"
           src={process.env.PUBLIC_URL + '/clear.svg'}
         />
       </button>
@@ -69,14 +69,14 @@ const Container = styled.div<{ length: SearchBarLength }>`
     flex: 1;
   }
 
-  .clear-button {
+  .search-clear-button {
     background-color: rgba(255, 255, 255, 0);
     border: 0;
     padding: 0;
     display: flex;
     align-items: center;
 
-    .clear-button-icon {
+    .search-clear-button-icon {
       margin-right: 10px;
     }
   }

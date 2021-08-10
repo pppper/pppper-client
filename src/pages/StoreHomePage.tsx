@@ -12,7 +12,7 @@ interface IStoreHomeProps {}
 export default function StoreHomePage(props: IStoreHomeProps) {
   return (
     <Container>
-      <div className="store-flex-column store-header">
+      <div className="store-header-wrapper store-sort-column">
         <div className="store-section-title">스토어</div>
         <DividedList list={['카테고리', '브랜드']} />
         <Margin margin={24} />
@@ -33,11 +33,11 @@ export default function StoreHomePage(props: IStoreHomeProps) {
 }
 
 const Container = styled.div`
-  .store-flex-column {
+  .store-sort-column {
     display: flex;
     flex-direction: column;
   }
-  .store-header {
+  .store-header-wrapper {
     padding: 9px 27px 6px 28px;
     border-bottom: 2px solid;
     border-color: ${(props) => props.theme.colors.gray4};
