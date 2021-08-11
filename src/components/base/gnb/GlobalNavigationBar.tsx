@@ -20,10 +20,10 @@ const NavigationBar: React.FC<INavigationBarProps> = () => {
   const { pathname } = location;
 
   const isHome = pathname === '/';
-  const isCodi = pathname.substring(0, 5) === '/codi';
-  const isStore = pathname.substring(0, 6) === '/store';
-  const isBookmark = pathname.substring(0, 9) === '/bookmark';
-  const isProfile = pathname.substring(0, 7) === '/mypage';
+  const isCodi = pathname.split('?')[0] === '/codi';
+  const isStore = pathname.split('?')[0] === '/store';
+  const isBookmark = pathname.split('?')[0] === '/bookmark';
+  const isProfile = pathname.split('?')[0] === '/mypage';
 
   return (
     <NavigationBarWrapper>
