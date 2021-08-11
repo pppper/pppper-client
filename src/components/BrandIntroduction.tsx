@@ -52,7 +52,7 @@ export const BrandIntroduction: React.FC<BrandIntroProps> = (props) => {
   return (
     <Container moveDistance={sliderWidth ? sliderLocation : 0}>
       <div className="brand-introduction-title">DEEPCOLLECTIVE</div>
-      <Margin margin={24} />
+      <Margin margin={14} />
       <img
         className="brand-introduction-main-image"
         src="http://image.musinsa.com/images/plan_w_mobile_img/2021080913300600000002970.jpg"
