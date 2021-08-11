@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { useHistory } from 'react-router-dom';
 import { ReactComponent as BookMarkIcon } from '../../assets/icon/store/store_bookmark_icon.svg';
 
 import ProductType from '../../types/product';
@@ -10,8 +10,17 @@ interface ItemProps {
 }
 
 export const StoreItem: React.FC<ItemProps> = ({ product }) => {
+  const history = useHistory();
+  function storeItemClicked() {
+    history.push({
+      pathname: `/store/product/${product.id}`,
+      state: {
+        productId: product.id,
+      },
+    });
+  }
   return (
-    <Container>
+    <Container onClick={storeItemClicked}>
       <img
         className="storeitem-product-image"
         alt="제품 이미지"

@@ -11,3 +11,9 @@ interface GetProductsProps {
 
 export const getProductListAPI = (props: GetProductsProps) =>
   apiClient.get(`/items`, { params: props });
+
+interface IGetProductByIdProps {
+  product_id: number;
+}
+export const getProductByIdAPI = (props: IGetProductByIdProps) =>
+  apiClient.get(`/items/${props.product_id}`);

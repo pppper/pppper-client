@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom';
 import StoreHomePage from './pages/StoreHomePage';
 import StoreCategoryPage from './pages/StoreCategoryPage';
 import ProductCollectionPage from './pages/store/category/ProductCollectionPage';
+import ProductDetailPage from './pages/store/ProductDetailPage';
 
 import { useAlert } from './lib/hooks/useAlert';
 
@@ -27,6 +28,7 @@ function App() {
         exact
         component={ProductCollectionPage}
       />
+      <Route path="/store/product/:id" exact component={ProductDetailPage} />
       {/* <CustomButton
         active={true}
         outlined={true}
