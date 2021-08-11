@@ -7,6 +7,7 @@ import { getProductByIdAPI } from '../../lib/api/product';
 import Header from '../../components/base/Header/Header';
 import { Margin } from '../../components/Margin';
 import DetailProductInformation from '../../components/store/DetailProductInformation';
+import ShippingInformation from '../../components/store/ShippingInformation';
 
 interface IProductDetailPageProps {}
 
@@ -33,6 +34,7 @@ const ProductDetailPage: React.FC<IProductDetailPageProps> = () => {
         src={'https://api.pppper.com' + product.item.image.url}
       />
       <DetailProductInformation product={product.item} />
+      <ShippingInformation />
     </StyledProductDetail>
   ) : (
     <></>

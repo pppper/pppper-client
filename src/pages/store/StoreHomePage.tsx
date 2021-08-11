@@ -7,7 +7,7 @@ import { Margin } from '../../components/Margin';
 
 import { IonSearchbar } from '@ionic/react';
 
-import { ReactComponent as ShoppingCartIcon } from '../assets/icon/header/header_shopping_cart_icon.svg';
+import { ReactComponent as ShoppingCartIcon } from '../../assets/icon/header/header_shopping_cart_icon.svg';
 
 interface IStoreHomeProps {}
 
