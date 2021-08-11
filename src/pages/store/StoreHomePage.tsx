@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { DividedList } from '../components/DividedList';
-import { BrandIntroduction } from '../components/BrandIntroduction';
-import { Margin } from '../components/Margin';
+import { DividedList } from '../../components/DividedList';
+import { BrandIntroduction } from '../../components/BrandIntroduction';
+import { Margin } from '../../components/Margin';
 
 import { IonSearchbar } from '@ionic/react';
 

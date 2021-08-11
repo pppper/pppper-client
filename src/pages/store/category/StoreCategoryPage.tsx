@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import Category from '../components/Category';
-import Header from '../components/base/Header/Header';
+import Category from '../../../components/Category';
+import Header from '../../../components/base/Header/Header';
 
-import { CategoryFetchers } from '../fetchers/categories';
+import { CategoryFetchers } from '../../../fetchers/categories';
 
 interface IStoreCategoryPageProps {}
 

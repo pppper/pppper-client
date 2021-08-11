@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 import { Route } from 'react-router-dom';
 
-import StoreHomePage from './pages/StoreHomePage';
-import StoreCategoryPage from './pages/StoreCategoryPage';
+import StoreHomePage from './pages/store/StoreHomePage';
+import StoreCategoryPage from './pages/store/category/StoreCategoryPage';
 import ProductCollectionPage from './pages/store/category/ProductCollectionPage';
 import ProductDetailPage from './pages/store/ProductDetailPage';
 
