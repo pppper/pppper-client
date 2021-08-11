@@ -13,6 +13,7 @@ import StoreCategoryPage from './pages/StoreCategoryPage';
 import { useAlert } from './lib/hooks/useAlert';
 
 import { lightTheme } from './styles/theme';
+import NavigationBar from './components/base/gnb/GlobalNavigationBar';
 
 function App() {
   const [theme, setTheme] = useState<DefaultTheme>(lightTheme);
@@ -47,6 +48,7 @@ function App() {
         <Product />
         <SearchBar />
       </Route>
+      <NavigationBar />
     </ThemeProvider>
   );
 }
