@@ -6,7 +6,7 @@ import Header from '../../../components/base/Header/Header';
 import MenuSlider from '../../../components/store/StoreMenuSlider';
 import StoreItem from '../../../components/store/StoreItem';
 
-import getProducts from '../../../fetchers/product';
+import { getProductListAPI } from '../../../lib/api/product';
 
 interface IProductCollectionPageProps {}
 
@@ -19,7 +19,9 @@ const ProductCollectionPage: React.FC<IProductCollectionPageProps> = () => {
 
   const getProductList = async () => {
     try {
-      const data = await getProducts({ category_id: currentCategoryId });
+      const { data } = await getProductListAPI({
+        category_id: currentCategoryId,
+      });
       setProductList(data);
     } catch (error) {}
   };
