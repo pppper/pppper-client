@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+
 import { CustomButton } from './Button';
 import { Margin } from './Margin';
+
+import { userActions } from '../modules/slices/user';
+import { useAppSelector } from '../lib/hooks/useAppSelector';
 
 interface BrandIntroProps {
   title?: string;
@@ -12,6 +17,8 @@ interface BrandIntroProps {
 export const BrandIntroduction: React.FC<BrandIntroProps> = (props) => {
   const [userSwipeDistance, setUserSwipeDistance] = useState(0);
   const [sliderLocation, setSliderLocation] = useState(0);
+  const dispatch = useDispatch();
+  const userState = useAppSelector((state) => state.user);
   var swipeStart = 0;
   const sliderWidth = document.getElementsByClassName(
     'brand-codi-image-slider'
@@ -28,6 +35,20 @@ export const BrandIntroduction: React.FC<BrandIntroProps> = (props) => {
   useEffect(() => {
     if (sliderWidth) translateDistance();
   }, [userSwipeDistance]);
+
+  console.log('userState', userState);
+
+  const handleReduxTest = () => {
+    dispatch(
+      userActions.setUserInfo({
+        id: 1,
+        name: 'eun',
+        email: 'koeun0712@ewhain.net',
+        profileImage: '',
+      })
+    );
+  };
+
   return (
     <Container moveDistance={sliderWidth ? sliderLocation : 0}>
       <div className="brand-introduction-title">DEEPCOLLECTIVE</div>
