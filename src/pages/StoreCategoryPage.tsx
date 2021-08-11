@@ -13,7 +13,7 @@ const StoreCategoryPage: React.FC<IStoreCategoryPageProps> = () => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await CategoryFetchers.getParents({ type: 'parent' });
+      const data = await CategoryFetchers.getParents({ type: 'parent' });
       setParentCategory(data);
     })();
   }, []);
