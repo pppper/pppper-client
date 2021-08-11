@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
-import { SizedBox } from '../components/SizedBox';
+import { SizedBox } from '../../components/SizedBox';
+import ProductPicker from './ProductPicker';
 
 interface ICodyGenerationPageProps {}
 
@@ -23,7 +24,7 @@ const proposalDescription =
 const CodyGenerationPage: React.FC<ICodyGenerationPageProps> = () => {
   return (
     <Wrapper>
-      <RequestRow1>
+      <ProposalRow>
         <ProposalProfile>
           <img
             src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQU2JRbbl3LBOm_an3eI5iplFhOoLESyBwUfmWDO49BS1EYuGUE"
@@ -39,7 +40,7 @@ const CodyGenerationPage: React.FC<ICodyGenerationPageProps> = () => {
             return <ProposalTag>#{tag}</ProposalTag>;
           })}
         </ProposalTags>
-      </RequestRow1>
+      </ProposalRow>
       <SizedBox height={16}></SizedBox>
       <ProposalDescription>“ {proposalDescription} ”</ProposalDescription>
       <SizedBox height={16}></SizedBox>
@@ -48,24 +49,38 @@ const CodyGenerationPage: React.FC<ICodyGenerationPageProps> = () => {
         <ReferenceCody></ReferenceCody>
         <ReferenceCody></ReferenceCody>
       </ReferenceCodySlider>
+      <SizedBox height={100}></SizedBox>
+      <ProductPicker></ProductPicker>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  padding: 0 28px;
+  /* padding: 0 28px; */
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  * {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 `;
 
-const RequestRow1 = styled.div`
+const ProposalRow = styled.div`
   display: flex;
   flex-direction: row;
   align-items: stretch;
+  padding: 0 28px;
 `;
 
 const ProposalDescription = styled.div`
   line-height: 1.43;
   letter-spacing: 0.07px;
   font-size: 14px;
+  padding: 0 28px;
 `;
 
 const ProposalProfile = styled.div`
@@ -114,6 +129,7 @@ const ReferenceCodySlider = styled.div`
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
+  padding: 0 28px;
 `;
 
 const ReferenceCody = styled.div`
@@ -123,9 +139,13 @@ const ReferenceCody = styled.div`
   flex-shrink: 0;
 
   background-color: ${() => {
-    const randomColor = Math.floor(Math.random()*16777215).toString(16);
-    return `#${randomColor}`
+    return generateRandomColor();
   }};
 `;
+
+export const generateRandomColor = () => {
+  const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+  return `#${randomColor}`;
+};
 
 export default CodyGenerationPage;
