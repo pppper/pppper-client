@@ -1,6 +1,6 @@
 import apiClient from './apiClient';
 
-interface GetProductsProps {
+interface IGetProductsProps {
   page?: number;
   pageSize?: number;
   tag_id?: number;
@@ -9,5 +9,5 @@ interface GetProductsProps {
   select_content?: any;
 }
 
-export const getProductListAPI = (props: GetProductsProps) =>
+export const getProducts = (props: IGetProductsProps) =>
   apiClient.get(`/items`, { params: props });

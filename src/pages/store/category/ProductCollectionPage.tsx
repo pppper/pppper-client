@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useLocation } from 'react-router';
 
-import Header from '../../../components/base/Header/Header';
+import Header from '../../../components/base/header/Header';
 import MenuSlider from '../../../components/store/StoreMenuSlider';
 import StoreItem from '../../../components/store/StoreItem';
 
-import { getProductListAPI } from '../../../lib/api/product';
+import { getProducts } from '../../../lib/api/product';
 
 interface IProductCollectionPageProps {}
 
@@ -19,7 +19,7 @@ const ProductCollectionPage: React.FC<IProductCollectionPageProps> = () => {
 
   const getProductList = async () => {
     try {
-      const { data } = await getProductListAPI({
+      const { data } = await getProducts({
         category_id: currentCategoryId,
       });
       setProductList(data);

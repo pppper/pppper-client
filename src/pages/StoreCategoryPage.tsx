@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import Category from '../components/Category';
-import Header from '../components/base/Header/Header';
+import Header from '../components/base/header/Header';
 
 import { CategoryFetchers } from '../fetchers/categories';
 

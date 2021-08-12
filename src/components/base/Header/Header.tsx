@@ -22,7 +22,7 @@ const Header: React.FC<IHeaderProps> = ({
   const history = useHistory();
 
   return (
-    <HeaderBlock>
+    <HeaderWrapper>
       <div
         className="header-left-arrow-icon-block"
         onClick={() => history.push(goBackLink)}
@@ -38,13 +38,13 @@ const Header: React.FC<IHeaderProps> = ({
       ) : (
         <div className="header-empty-right-block"></div>
       )}
-    </HeaderBlock>
+    </HeaderWrapper>
   );
 };
 
 export default React.memo(Header);
 
-const HeaderBlock = styled.div`
+const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
