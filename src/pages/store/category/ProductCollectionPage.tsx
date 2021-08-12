@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useLocation } from 'react-router';
 
-import Header from '../../../components/base/header/Header';
+import Header from '../../../components/base/Header/Header';
 import MenuSlider from '../../../components/store/StoreMenuSlider';
 import StoreItem from '../../../components/store/StoreItem';
 
