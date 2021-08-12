@@ -5,7 +5,7 @@ import ImagePlaceholder from '../../components/ImagePlaceholder';
 import { SizedBox } from '../../components/SizedBox';
 import ProductPicker from './ProductPicker';
 
-interface ICodyGenerationPageProps {}
+interface ICodiGenerationPageProps {}
 
 const proposalTags = [
   '화성',
@@ -24,7 +24,7 @@ const proposalTags = [
 const proposalDescription =
   'Aliquip id eu aliqua nostrud. Proident minim sunt elit occaecat ut. Incididunt cillum sunt cillum tempor mollit commodo. Duis aliqua velit Lorem ea cillum ea.';
 
-const CodyGenerationPage: React.FC<ICodyGenerationPageProps> = () => {
+const CodiGenerationPage: React.FC<ICodiGenerationPageProps> = () => {
   return (
     <Wrapper>
       <ProposalRow>
@@ -47,11 +47,11 @@ const CodyGenerationPage: React.FC<ICodyGenerationPageProps> = () => {
       <SizedBox height={16}></SizedBox>
       <ProposalDescription>“ {proposalDescription} ”</ProposalDescription>
       <SizedBox height={16}></SizedBox>
-      <ReferenceCodySlider>
-        <ReferenceCody></ReferenceCody>
-        <ReferenceCody></ReferenceCody>
-        <ReferenceCody></ReferenceCody>
-      </ReferenceCodySlider>
+      <ReferenceCodiSlider>
+        <ReferenceCodi></ReferenceCodi>
+        <ReferenceCodi></ReferenceCodi>
+        <ReferenceCodi></ReferenceCodi>
+      </ReferenceCodiSlider>
       <SizedBox height={100}></SizedBox>
       <div>Editor</div>
       <ProductPicker></ProductPicker>
@@ -173,14 +173,14 @@ const ProposalTag = styled.div`
   margin-bottom: 7.5px;
 `;
 
-const ReferenceCodySlider = styled.div`
+const ReferenceCodiSlider = styled.div`
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
   padding: 0 28px;
 `;
 
-const ReferenceCody = styled(ImagePlaceholder)`
+const ReferenceCodi = styled(ImagePlaceholder)`
   width: 220px;
   height: 220px;
   margin-right: 8px;
@@ -192,4 +192,4 @@ export const generateRandomColor = () => {
   return `#${randomColor}`;
 };
 
-export default CodyGenerationPage;
+export default CodiGenerationPage;

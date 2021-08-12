@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 
 import { useAlert } from './lib/hooks/useAlert';
-import CodyGenerationPage from './pages/CodyGenerationPage';
+import CodiGenerationPage from './pages/CodiGenerationPage';
 import ProductCollectionPage from './pages/store/category/ProductCollectionPage';
 import StoreCategoryPage from './pages/StoreCategoryPage';
 import StoreHomePage from './pages/StoreHomePage';
@@ -22,8 +22,8 @@ function App() {
         <StoreCategoryPage />
       </Route>
 
-      <Route path="/cody/new">
-        <CodyGenerationPage />
+      <Route path="/codi/new">
+        <CodiGenerationPage />
       </Route>
       <Route
         path="/store/category/:id"
