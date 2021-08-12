@@ -47,7 +47,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 187px;
+  width: 187.5px;
   margin-bottom: 31px;
 
   .storeitem-flex-column {

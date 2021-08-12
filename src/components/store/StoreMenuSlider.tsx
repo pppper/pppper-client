@@ -19,6 +19,7 @@ const settings = {
   centerPadding: '60px',
   slidesToShow: 5,
   swipeToSlide: true,
+  arrows: false,
 };
 
 const MenuSlider: React.FC<IMenuSliderProps> = ({
