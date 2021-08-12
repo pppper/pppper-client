@@ -1,29 +1,44 @@
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import styled from 'styled-components/macro';
 
 import ImagePlaceholder from '../../components/ImagePlaceholder';
 import { SizedBox } from '../../components/SizedBox';
-import { generateRandomColor } from './';
-
-export interface IItem {
-  brand: string;
-  price: number;
-  discount?: number; // in percent
-  image?: string; // image
-}
+import { IApiProduct } from '../../types/api/product.api';
+import { resolveImageUrl } from '../../utils/resolveUrl';
 
 interface IProductItemProps {
-  item: IItem;
+  product: IApiProduct;
   selected?: boolean;
+  starred?: boolean;
+  onStarClick?: React.MouseEventHandler;
+  onToggle?: React.MouseEventHandler;
 }
 
 const ProductItem: React.FC<IProductItemProps> = (props) => {
-  const { item, selected } = props;
+  const { product, selected, starred, onStarClick, onToggle } = props;
+  const discountPercentage = Math.floor(
+    ((product.price - product.competitor_price) / product.price) * 100
+  );
   return (
-    <Wrapper>
-      <ProductImage selected={selected}></ProductImage>
+    <Wrapper onClick={onToggle}>
+      <ProductImage
+        selected={selected}
+        src={resolveImageUrl(product.image)}
+      ></ProductImage>
       <SizedBox height={6} />
       <Metadata>
-        <Brand>{item.brand}</Brand>
+        <Brand>{product.brand_title}</Brand>
+        <SizedBox height={2}></SizedBox>
+        <PriceRow>
+          <span className="price">{product.price}원 </span>
+          <SizedBox width="0.2rem"></SizedBox>
+          <span className="discount-percentage">{discountPercentage}%</span>
+        </PriceRow>
+        {starred ? (
+          <FilledStar onClick={onStarClick} />
+        ) : (
+          <OutlinedStar onClick={onStarClick} />
+        )}
       </Metadata>
     </Wrapper>
   );
@@ -34,10 +49,12 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 111px;
 `;
 
 interface IProductImageProps {
   selected?: boolean;
+  src?;
 }
 
 const ProductImage = styled(ImagePlaceholder)<IProductImageProps>`
@@ -48,12 +65,15 @@ const ProductImage = styled(ImagePlaceholder)<IProductImageProps>`
   border: solid 2px ${(props) => props.theme.colors.primary1};
   border-radius: 4px;
   ${(props) => (props.selected ? '' : 'border: none')};
+  background-color: black;
 `;
 
 const Metadata = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
+
+  position: relative;
 
   width: 100%;
 `;
@@ -66,4 +86,38 @@ const Brand = styled.span`
   font-size: 10px;
   color: ${(props) => props.theme.colors.gray2};
 `;
+
+const PriceRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  span.price {
+    font-size: 10px;
+    line-height: 13px;
+    color: ${(props) => props.theme.colors.black};
+  }
+
+  span.discount-percentage {
+    font-size: 10px;
+    line-height: 13px;
+    color: ${(props) => props.theme.colors.primary1};
+  }
+`;
+
+const FilledStar = styled(AiFillStar)`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: ${(props) => props.theme.colors.gray2};
+`;
+
+const OutlinedStar = styled(AiOutlineStar)`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: ${(props) => props.theme.colors.gray2};
+`;
+
 export default ProductItem;

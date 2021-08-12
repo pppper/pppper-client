@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 
+import { CustomButton } from '../../components/Button';
 import ImagePlaceholder from '../../components/ImagePlaceholder';
 import { SizedBox } from '../../components/SizedBox';
 import ProductPicker from './ProductPicker';
@@ -20,10 +21,6 @@ const proposalTags = [
   '친환경',
 ];
 
-interface ICodyProposal {
-
-}
-
 const proposalDescription =
   'Aliquip id eu aliqua nostrud. Proident minim sunt elit occaecat ut. Incididunt cillum sunt cillum tempor mollit commodo. Duis aliqua velit Lorem ea cillum ea.';
 
@@ -42,8 +39,8 @@ const CodyGenerationPage: React.FC<ICodyGenerationPageProps> = () => {
         </ProposalProfile>
         <SizedBox width={20}></SizedBox>
         <ProposalTags>
-          {proposalTags.map((tag) => {
-            return <ProposalTag>#{tag}</ProposalTag>;
+          {proposalTags.map((tag, index) => {
+            return <ProposalTag key={index}>#{tag}</ProposalTag>;
           })}
         </ProposalTags>
       </ProposalRow>
@@ -56,11 +53,16 @@ const CodyGenerationPage: React.FC<ICodyGenerationPageProps> = () => {
         <ReferenceCody></ReferenceCody>
       </ReferenceCodySlider>
       <SizedBox height={100}></SizedBox>
+      <div>Editor</div>
       <ProductPicker></ProductPicker>
+      <BottomActionContainer>
+        <ActionButton>등록하기</ActionButton>
+      </BottomActionContainer>
     </Wrapper>
   );
 };
 
+const BOTTOM_ACTION_CONTAINER_HEIGHT = 64;
 const Wrapper = styled.div`
   /* padding: 0 28px; */
   /* Hide scrollbar for Chrome, Safari and Opera */
@@ -73,6 +75,46 @@ const Wrapper = styled.div`
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+
+  & > * {
+    flex-shrink: 0;
+  }
+
+  padding-bottom: ${BOTTOM_ACTION_CONTAINER_HEIGHT}px;
+`;
+
+const BottomActionContainer = styled.div`
+  position: fixed;
+  bottom: 0;
+
+  width: 100%;
+  height: ${BOTTOM_ACTION_CONTAINER_HEIGHT}px;
+  background-color: ${(props) => props.theme.colors.white};
+
+  box-shadow: 0 -4px 4px 0 rgba(126, 130, 137, 0.1);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+
+  padding: 0 16px;
+`;
+
+const ActionButton = styled.button`
+  all: unset;
+  width: 100%;
+  height: 48px;
+
+  border-radius: 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 16px;
+  background-color: ${(props) => props.theme.colors.primary1};
+  color: ${(props) => props.theme.colors.white};
 `;
 
 const ProposalRow = styled.div`

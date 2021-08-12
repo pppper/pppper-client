@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { IonSearchbar } from '@ionic/react';
 
 import { SizedBox } from '../../components/SizedBox';
-import ProductItem, { IItem } from './ProductItem';
+import { IApiProduct } from '../../types/api/product.api';
+import ProductItem from './ProductItem';
 
 interface IMenu {}
 
@@ -20,18 +22,24 @@ const menus: IMenu[] = [
   '바지',
 ];
 
-const items: IItem[] = [
-  { brand: 'COVERNAT', price: 25000, discount: 50 },
-  { brand: 'COVERNAT', price: 25000, discount: 50 },
-  { brand: 'COVERNAT', price: 25000, discount: 50 },
-  { brand: 'COVERNAT', price: 25000, discount: 50 },
-  { brand: 'COVERNAT', price: 25000, discount: 50 },
-  { brand: 'COVERNAT', price: 25000, discount: 50 },
-];
-
 interface IProductPickerProps {}
 const ProductPicker: React.FC<IProductPickerProps> = () => {
+  useEffect(() => {
+    // fetch products
+    axios.get('https://api.pppper.com/api/v1/items').then((response) => {
+      setProducts(response.data);
+    });
+
+    // setProducts()
+  }, []);
+  const [products, setProducts] = useState<IApiProduct[]>([]);
   const [activeMenuIndex, setActiveMenuIndex] = useState<number>(0);
+  const [selectedProductIds, setSelectedProductIds] = useState<Set<number>>(
+    new Set()
+  );
+  const [starredProductIds, setStarredProductIds] = useState<Set<number>>(
+    new Set()
+  );
   return (
     <Wrapper>
       <SlidingMenu>
@@ -59,8 +67,34 @@ const ProductPicker: React.FC<IProductPickerProps> = () => {
         </SearchCategoryDropdown>
       </SearchRow>
       <ProductItemGrid>
-        {items.map((item, index) => {
-          return <ProductItem item={item} key={index} />;
+        {products.map((product, index) => {
+          return (
+            <ProductItem
+              product={product}
+              key={index}
+              selected={selectedProductIds.has(product.id)}
+              onToggle={() => {
+                const nextSelectedProductIds = new Set(selectedProductIds);
+                if (selectedProductIds.has(product.id)) {
+                  nextSelectedProductIds.delete(product.id);
+                } else {
+                  nextSelectedProductIds.add(product.id);
+                }
+                setSelectedProductIds(nextSelectedProductIds);
+              }}
+              starred={starredProductIds.has(product.id)}
+              onStarClick={(event) => {
+                event.stopPropagation();
+                const nextStarredProductIds = new Set(starredProductIds);
+                if (starredProductIds.has(product.id)) {
+                  nextStarredProductIds.delete(product.id);
+                } else {
+                  nextStarredProductIds.add(product.id);
+                }
+                setStarredProductIds(nextStarredProductIds);
+              }}
+            />
+          );
         })}
       </ProductItemGrid>
     </Wrapper>
