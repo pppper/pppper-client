@@ -1,15 +1,6 @@
-type IParentCategory = {
+export interface ICategory {
   id: number;
-  title: string;
+  name: string;
   position: number;
-  childIds: number[];
-};
-
-type IChildCategory = {
-  id: number;
-  parentId: number;
-  title: string;
-  position: number;
-};
-
-export { IParentCategory, IChildCategory };
+  parentCategory: ICategory | null;
+}
