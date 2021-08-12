@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
 export interface ISizedBoxProps {
-  width?: number;
-  height?: number;
+  width?: number | string;
+  height?: number | string;
 }
 
-export const SizedBox = styled.div<ISizedBoxProps>`
-  width: ${props => props.width}px;
-  height: ${props => props.height}px;
-`;
+export const SizedBox: React.FC<ISizedBoxProps> = ({ width, height }) => (
+  <div style={{ width, height }}></div>
+);
