@@ -1,5 +1,6 @@
 interface IProduct {
   id: number;
+  categoryId: number;
   title: string;
   price: number;
   originalPrice: number;
@@ -10,7 +11,6 @@ interface IProduct {
   mainImage: string;
   sizeArray: string[];
   tags: string[];
-
   bookmarksCount: number;
   likesCount: number;
   grade: number;
