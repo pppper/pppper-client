@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { generateRandomColor } from '../pages/CodyGenerationPage';
+import { generateRandomColor } from '../pages/CodiGenerationPage';
 
 const ImagePlaceholder = styled.img`
   width: 100%;

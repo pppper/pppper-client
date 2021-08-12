@@ -1,17 +1,36 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { ReactComponent as BookMarkIcon } from '../../assets/icon/store/store_bookmark_icon.svg';
 
 import ProductType from '../../types/product';
 
+type StoreItemSizeType = 'small' | 'large';
 interface ItemProps {
   product: ProductType;
+  type: StoreItemSizeType;
 }
 
-export const StoreItem: React.FC<ItemProps> = ({ product }) => {
+const getWrapperStyle = (type: StoreItemSizeType) => {
+  switch (type) {
+    case 'small':
+      return css`
+        width: 140px;
+        margin-bottom: 26px;
+      `;
+    case 'large':
+      return css`
+        width: 187.5px;
+        margin-bottom: 31px;
+      `;
+    default:
+      return null;
+  }
+};
+
+export const StoreItem: React.FC<ItemProps> = ({ product, type }) => {
   return (
-    <Container>
+    <StoreItemWrapper type={type}>
       <img
         className="storeitem-product-image"
         alt="제품 이미지"
@@ -37,18 +56,17 @@ export const StoreItem: React.FC<ItemProps> = ({ product }) => {
           <div className="storeitem-bookmark-count">{product.books_count}</div>
         </div>
       </div>
-    </Container>
+    </StoreItemWrapper>
   );
 };
 
 export default StoreItem;
 
-const Container = styled.div`
+const StoreItemWrapper = styled.div<{ type: StoreItemSizeType }>`
   display: flex;
   flex-direction: column;
 
-  width: 187.5px;
-  margin-bottom: 31px;
+  ${({ type }) => getWrapperStyle(type)}
 
   .storeitem-flex-column {
     display: flex;
@@ -57,13 +75,13 @@ const Container = styled.div`
 
   .storeitem-product-image {
     width: 100%;
-    height: 220px;
+    height: ${({ type }) => (type === 'small' ? '140px' : '220px')};
 
     object-fit: cover;
   }
 
   .storeitem-info-container {
-    padding: 0 16px;
+    padding: ${({ type }) => (type === 'small' ? '0px' : '0 16px')};
 
     .storeitem-brand {
       font-size: 12px;

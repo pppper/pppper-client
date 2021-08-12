@@ -3,7 +3,8 @@ import { Route } from 'react-router-dom';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 
 import { useAlert } from './lib/hooks/useAlert';
-import CodyGenerationPage from './pages/CodyGenerationPage';
+import CodiGenerationPage from './pages/CodiGenerationPage';
+import SlidingMenuBarTestingPage from './pages/component-testing/SlidingMenuBarTestingPage';
 import ProductCollectionPage from './pages/store/category/ProductCollectionPage';
 import StoreCategoryPage from './pages/StoreCategoryPage';
 import StoreHomePage from './pages/StoreHomePage';
@@ -25,35 +26,17 @@ function App() {
         <StoreCategoryPage />
       </Route>
 
-      <Route path="/cody/new">
-        <CodyGenerationPage />
+      <Route path="/codi/new">
+        <CodiGenerationPage />
+      </Route>
+      <Route path="/component-testing/sliding-menu-bar-testing">
+        <SlidingMenuBarTestingPage />
       </Route>
       <Route
         path="/store/category/:id"
         exact
         component={ProductCollectionPage}
       />
-      {/* <CustomButton
-        active={true}
-        outlined={true}
-        onClick={() => {
-          showAlert({
-            header: 'hi',
-            subtitle: 'subtitle',
-            message: 'message',
-            buttons: ['hi', 'bye'],
-          });
-        }}
-      >
-        fffff
-      </CustomButton>
-      <TextInput placeholder="dfdf"></TextInput>
-      <SearchBar length="long" />
-      <Product /> */}
-      {/* <Route path="/test">
-        <Product />
-        <SearchBar />
-      </Route> */}
       <Margin margin={76} />
       <NavigationBar />
     </ThemeProvider>

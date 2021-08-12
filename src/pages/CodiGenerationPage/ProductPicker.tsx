@@ -111,7 +111,7 @@ const SlidingMenu = styled.div`
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid ${(props) => props.theme.colors.gray4};
-  padding: 0 28px;
+  padding: 0 16px;
 `;
 
 interface ISlidingMenuItemProps {
