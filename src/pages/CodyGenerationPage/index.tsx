@@ -1,4 +1,6 @@
 import styled, { css } from 'styled-components';
+
+import ImagePlaceholder from '../../components/ImagePlaceholder';
 import { SizedBox } from '../../components/SizedBox';
 import ProductPicker from './ProductPicker';
 
@@ -18,8 +20,12 @@ const proposalTags = [
   '친환경',
 ];
 
+interface ICodyProposal {
+
+}
+
 const proposalDescription =
-  '결혼기념일이라서 와이프와 근사한 레스토랑에 가기로 했습니다. 와이프가 사줬던 갈색 구두와 검정 정장 바지를 입고 가고 싶은데, 어떤 상의와 함께 입어야 할지를 모르겠어요. 모자와 가방도 함께 알려주시면 감사하겠습니다. 코디가 만족스럽다면 테슬라 주식 한주가 무료?';
+  'Aliquip id eu aliqua nostrud. Proident minim sunt elit occaecat ut. Incididunt cillum sunt cillum tempor mollit commodo. Duis aliqua velit Lorem ea cillum ea.';
 
 const CodyGenerationPage: React.FC<ICodyGenerationPageProps> = () => {
   return (
@@ -132,15 +138,11 @@ const ReferenceCodySlider = styled.div`
   padding: 0 28px;
 `;
 
-const ReferenceCody = styled.div`
+const ReferenceCody = styled(ImagePlaceholder)`
   width: 220px;
   height: 220px;
   margin-right: 8px;
   flex-shrink: 0;
-
-  background-color: ${() => {
-    return generateRandomColor();
-  }};
 `;
 
 export const generateRandomColor = () => {

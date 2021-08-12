@@ -1,6 +1,8 @@
-import { IonSearchbar } from '@ionic/react';
 import { useState } from 'react';
 import styled from 'styled-components';
+
+import { IonSearchbar } from '@ionic/react';
+
 import { SizedBox } from '../../components/SizedBox';
 import ProductItem, { IItem } from './ProductItem';
 
@@ -126,6 +128,9 @@ const SearchCategoryDropdown = styled.select`
   border: none;
   margin-right: 16px;
   font-size: 13px;
+
+  background-color: white;
+  border-radius: 10px;
 `;
 
 const ProductItemGrid = styled.div`

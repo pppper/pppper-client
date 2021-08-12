@@ -1,6 +1,8 @@
 import styled from 'styled-components/macro';
-import { generateRandomColor } from '.';
+
+import ImagePlaceholder from '../../components/ImagePlaceholder';
 import { SizedBox } from '../../components/SizedBox';
+import { generateRandomColor } from './';
 
 export interface IItem {
   brand: string;
@@ -38,15 +40,13 @@ interface IProductImageProps {
   selected?: boolean;
 }
 
-const ProductImage = styled.img<IProductImageProps>`
+const ProductImage = styled(ImagePlaceholder)<IProductImageProps>`
   width: 100%;
   max-width: 111px;
   height: 111px;
   max-height: 111px;
-  background: ${() => generateRandomColor()};
   border: solid 2px ${(props) => props.theme.colors.primary1};
   border-radius: 4px;
-
   ${(props) => (props.selected ? '' : 'border: none')};
 `;
 
