@@ -1,21 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import styled, { keyframes } from 'styled-components';
-
-import { CategoryFetchers } from '../fetchers/categories';
-
+import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
 import { ReactComponent as OpenCloseIcon } from '../assets/icon/category/category_open_close_icon.svg';
+
+import { CategoryFetchers } from '../fetchers/categories';
+
+import CategoryType from '../types/category';
 
 interface ICategoryProps {
   id: number;
   title: string;
 }
 
-export default function Category(props: ICategoryProps) {
-  const { id, title } = props;
-  const [childCategories, setChildCategories] = useState([]);
+interface ISubCategoryProps {
+  categories: CategoryType[];
+  parentId: number;
+}
+
+interface IStyledCategoryProps {
+  isSelected: boolean;
+}
+
+const Category: React.FC<ICategoryProps> = ({ id, title }) => {
+  const [childCategories, setChildCategories] = useState<CategoryType[]>([]);
   const [isSelected, setIsSelected] = useState(false);
+
+  const handleCategoryClicked = () => {
+    setIsSelected((isSelected) => !isSelected);
+  };
 
   useEffect(() => {
     (async () => {
@@ -27,9 +40,7 @@ export default function Category(props: ICategoryProps) {
       );
     })();
   }, []);
-  async function handleCategoryClicked() {
-    setIsSelected(!isSelected);
-  }
+
   return (
     <StyledCategory
       key={id}
@@ -40,14 +51,50 @@ export default function Category(props: ICategoryProps) {
         {title}
         <OpenCloseIcon className="open-close-effect" />
       </div>
-      {isSelected ? <SubCategory categories={childCategories} /> : null}
+      {isSelected ? (
+        <SubCategory parentId={id} categories={childCategories} />
+      ) : null}
     </StyledCategory>
   );
-}
+};
 
-interface IStyledCategoryProps {
-  isSelected: boolean;
-}
+export default Category;
+
+const SubCategory: React.FC<ISubCategoryProps> = ({ categories, parentId }) => {
+  const history = useHistory();
+
+  const handleCategoryClicked = (e) => {
+    history.push({
+      pathname: `/store/category/${e.target.id}`,
+      state: {
+        currentCategoryId: Number(e.target.id),
+        currentParentId: Number(parentId),
+        childCategories: categories,
+      },
+    });
+  };
+
+  return (
+    <StyledSubCategory>
+      <div className="subcategory-wrapper">
+        {categories &&
+          categories.map((category) => {
+            return (
+              <div
+                className="subcategory-label"
+                onClick={handleCategoryClicked}
+                key={category.id}
+                id={category.id.toString()}
+              >
+                {category.title}
+              </div>
+            );
+          })}
+      </div>
+    </StyledSubCategory>
+  );
+};
+
 const StyledCategory = styled.div<IStyledCategoryProps>`
   display: table-row;
   border-top: 0.5px solid;
@@ -74,37 +121,6 @@ const StyledCategory = styled.div<IStyledCategoryProps>`
     transform: ${(props) => (props.isSelected ? 'rotate(45deg)' : '')};
   }
 `;
-
-interface ISubCategoryProps {
-  categories: any;
-}
-const SubCategory: React.FC<ISubCategoryProps> = (props) => {
-  const history = useHistory();
-  const { categories } = props;
-  function handleCategoryClicked(e) {
-    console.log(e.target.id);
-    history.push('/', {});
-  }
-  return (
-    <StyledSubCategory>
-      <div className="subcategory-wrapper">
-        {categories &&
-          categories.map((category) => {
-            return (
-              <div
-                className="subcategory-label"
-                onClick={handleCategoryClicked}
-                key={category.id}
-                id={category.id}
-              >
-                {category.title}
-              </div>
-            );
-          })}
-      </div>
-    </StyledSubCategory>
-  );
-};
 
 const StyledSubCategory = styled.div`
   .subcategory-wrapper {
