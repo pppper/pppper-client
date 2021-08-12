@@ -20,7 +20,12 @@ const StoreCategoryPage: React.FC<IStoreCategoryPageProps> = () => {
 
   return (
     <Container>
-      <Header title={'카테고리'} hasRightIcons={false} hasTitle />
+      <Header
+        title={'카테고리'}
+        hasRightIcons={false}
+        hasTitle
+        goBackLink={'/store'}
+      />
       <div className="category-list">
         {parentCategory &&
           parentCategory.map((category) => {
