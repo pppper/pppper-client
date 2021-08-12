@@ -15,28 +15,26 @@ interface BrandIntroProps {
   mainImage?: URL;
 }
 export const BrandIntroduction: React.FC<BrandIntroProps> = (props) => {
-  const [userSwipeDistance, setUserSwipeDistance] = useState(0);
-  const [sliderLocation, setSliderLocation] = useState(0);
+  // const [userSwipeDistance, setUserSwipeDistance] = useState(0);
+  // const [sliderLocation, setSliderLocation] = useState(0);
+  // var swipeStart = 0;
+  // const sliderWidth = document.getElementsByClassName(
+  //   'brand-codi-image-slider'
+  // )[0];
+  // function translateDistance() {
+  //   const min = 0;
+  //   const max = window.innerWidth - 16 - sliderWidth.clientWidth;
+  //   if (-userSwipeDistance / 1.5 + sliderLocation < min)
+  //     return setSliderLocation(min);
+  //   else if (-userSwipeDistance / 1.5 + sliderLocation > max)
+  //     return setSliderLocation(max);
+  //   return setSliderLocation(-userSwipeDistance / 1.5 + sliderLocation);
+  // }
+  // useEffect(() => {
+  //   if (sliderWidth) translateDistance();
+  // }, [userSwipeDistance]);
   const dispatch = useDispatch();
   const userState = useAppSelector((state) => state.user);
-  var swipeStart = 0;
-  const sliderWidth = document.getElementsByClassName(
-    'brand-codi-image-slider'
-  )[0];
-  function translateDistance() {
-    const min = 0;
-    const max = window.innerWidth - 16 - sliderWidth.clientWidth;
-    if (-userSwipeDistance / 1.5 + sliderLocation < min)
-      return setSliderLocation(min);
-    else if (-userSwipeDistance / 1.5 + sliderLocation > max)
-      return setSliderLocation(max);
-    return setSliderLocation(-userSwipeDistance / 1.5 + sliderLocation);
-  }
-  useEffect(() => {
-    if (sliderWidth) translateDistance();
-  }, [userSwipeDistance]);
-
-  console.log('userState', userState);
 
   const handleReduxTest = () => {
     dispatch(
@@ -50,7 +48,7 @@ export const BrandIntroduction: React.FC<BrandIntroProps> = (props) => {
   };
 
   return (
-    <Container moveDistance={sliderWidth ? sliderLocation : 0}>
+    <Container>
       <div className="brand-introduction-title">DEEPCOLLECTIVE</div>
       <Margin margin={14} />
       <img
@@ -71,10 +69,10 @@ export const BrandIntroduction: React.FC<BrandIntroProps> = (props) => {
       <Margin margin={11} />
       <div
         className="brand-codi-image-wrapper "
-        onTouchStart={(e) => (swipeStart = e.changedTouches[0].pageX)}
-        onTouchEnd={(e) =>
-          setUserSwipeDistance(e.changedTouches[0].pageX - swipeStart)
-        }
+        // onTouchStart={(e) => (swipeStart = e.changedTouches[0].pageX)}
+        // onTouchEnd={(e) =>
+        //   setUserSwipeDistance(e.changedTouches[0].pageX - swipeStart)
+        // }
       >
         <img className="brand-codi-image" />
         <img className="brand-codi-image" />
@@ -123,7 +121,7 @@ export const BrandIntroduction: React.FC<BrandIntroProps> = (props) => {
 };
 
 interface ISliderProps {
-  moveDistance: number;
+  // moveDistance: number;
 }
 
 const Container = styled.div<ISliderProps>`
@@ -185,8 +183,8 @@ const Container = styled.div<ISliderProps>`
     width: calc(100% / 3);
     z-index: 3;
     background-color: ${(props) => props.theme.colors.primary2};
-    transform: translate3d(${(props) => props.moveDistance}px, 0px, 0px);
-    transition: transform 0.1s;
+    /* transform: translate3d(0px, 0px, 0px);
+    transition: transform 0.1s; */
   }
   .brand-codi-image-wrapper {
     display: flex;
