@@ -1,4 +1,6 @@
 import React from 'react';
+
+import { useHistory } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import { ReactComponent as BookMarkIcon } from '../../assets/icon/store/store_bookmark_icon.svg';
@@ -29,8 +31,17 @@ const getWrapperStyle = (type: StoreItemSizeType) => {
 };
 
 export const StoreItem: React.FC<ItemProps> = ({ product, type }) => {
+  const history = useHistory();
+  function storeItemClicked() {
+    history.push({
+      pathname: `/store/product/${product.id}`,
+      state: {
+        productId: product.id,
+      },
+    });
+  }
   return (
-    <StoreItemWrapper type={type}>
+    <StoreItemWrapper type={type} onClick={storeItemClicked}>
       <img
         className="storeitem-product-image"
         alt="제품 이미지"

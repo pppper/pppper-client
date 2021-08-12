@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import Category from '../components/Category';
-import Header from '../components/base/Header/Header';
+import Category from '../../../components/Category';
+import Header from '../../../components/base/Header/Header';
 
-import { CategoryFetchers } from '../fetchers/categories';
+import { CategoryFetchers } from '../../../fetchers/categories';
 
 interface IStoreCategoryPageProps {}
 
@@ -20,7 +20,12 @@ const StoreCategoryPage: React.FC<IStoreCategoryPageProps> = () => {
 
   return (
     <Container>
-      <Header title={'카테고리'} hasRightIcons={false} hasTitle />
+      <Header
+        title={'카테고리'}
+        hasRightIcons={false}
+        hasTitle
+        goBackLink={'/store'}
+      />
       <div className="category-list">
         {parentCategory &&
           parentCategory.map((category) => {
