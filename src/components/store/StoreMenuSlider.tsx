@@ -70,6 +70,8 @@ const MenuSlider: React.FC<IMenuSliderProps> = ({
 export default MenuSlider;
 
 const MenuSliderWrapper = styled(Slider)`
+  background-color: ${(props) => props.theme.colors.white};
+
   border-bottom: 0.5px solid ${(props) => props.theme.colors.gray4};
   border-top: 0.5px solid ${(props) => props.theme.colors.gray4};
 

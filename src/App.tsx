@@ -9,6 +9,8 @@ import ProductCollectionPage from './pages/store/category/ProductCollectionPage'
 import StoreCategoryPage from './pages/StoreCategoryPage';
 import StoreHomePage from './pages/StoreHomePage';
 import { lightTheme } from './styles/theme';
+import NavigationBar from './components/base/gnb/GlobalNavigationBar';
+import { Margin } from './components/Margin';
 
 function App() {
   const [theme, setTheme] = useState<DefaultTheme>(lightTheme);
@@ -16,6 +18,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Margin margin={60} />
       <Route path="/store" exact>
         <StoreHomePage />
       </Route>
@@ -34,6 +37,8 @@ function App() {
         exact
         component={ProductCollectionPage}
       />
+      <Margin margin={76} />
+      <NavigationBar />
     </ThemeProvider>
   );
 }

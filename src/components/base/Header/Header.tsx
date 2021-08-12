@@ -54,6 +54,12 @@ const HeaderWrapper = styled.div`
 
   padding: 0 16px 0 20px;
 
+  position: fixed;
+  top: 0;
+  z-index: 10;
+
+  background-color: ${(props) => props.theme.colors.white};
+
   .header-left-arrow-icon-block {
     width: 33%;
   }
