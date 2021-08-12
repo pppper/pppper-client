@@ -1,19 +1,19 @@
 import { IApiProduct } from '../lib/api/product/type';
 
 interface IProduct {
-  bookmarksCount: number;
+  id: number;
+  price: number;
+  title: string;
+  tags: string[];
   brandId: number;
   brandName: string;
-  categoryId: number;
   codiImage: string;
-  detailImages: string[];
-  id: number;
-  likesCount: number;
   mainImage: string;
+  categoryId: number;
+  likesCount: number;
   originalPrice: number;
-  price: number;
-  tags: string[];
-  title: string;
+  bookmarksCount: number;
+  detailImages: string[];
 }
 
 export default IProduct;
