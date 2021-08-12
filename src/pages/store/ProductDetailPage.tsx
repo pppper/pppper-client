@@ -9,6 +9,9 @@ import { Margin } from '../../components/Margin';
 import DetailProductInformation from '../../components/store/DetailProductInformation';
 import ShippingInformation from '../../components/store/ShippingInformation';
 import BrandLink from '../../components/store/BrandLink';
+import CodiRecommendation from '../../components/store/CodiRecommendation';
+import DetailProductImages from '../../components/store/DetailProductImages';
+import ProductRecommendation from '../../components/store/ProductRecommendation';
 
 interface IProductDetailPageProps {}
 
@@ -37,6 +40,9 @@ const ProductDetailPage: React.FC<IProductDetailPageProps> = () => {
       <DetailProductInformation product={product} />
       <ShippingInformation />
       <BrandLink brand_id={product.brand_id} />
+      <CodiRecommendation />
+      <DetailProductImages detail_images={product.detail_images} />
+      <ProductRecommendation />
     </StyledProductDetail>
   ) : (
     <></>
