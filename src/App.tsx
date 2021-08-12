@@ -13,6 +13,7 @@ import StoreCategoryPage from './pages/StoreCategoryPage';
 import { useAlert } from './lib/hooks/useAlert';
 
 import { lightTheme } from './styles/theme';
+import CodyGenerationPage from './pages/CodyGenerationPage';
 
 function App() {
   const [theme, setTheme] = useState<DefaultTheme>(lightTheme);
@@ -25,6 +26,10 @@ function App() {
       </Route>
       <Route path="/store/category" exact>
         <StoreCategoryPage />
+      </Route>
+
+      <Route path="/cody/new">
+        <CodyGenerationPage />
       </Route>
       {/* <CustomButton
         active={true}
