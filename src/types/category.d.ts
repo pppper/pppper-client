@@ -1,4 +1,15 @@
-import { IApiCategory } from '../lib/api/category/type';
+type IParentCategory = {
+  id: number;
+  title: string;
+  position: number;
+  childIds: number[];
+};
 
-type ICategory = IApiCategory;
-export default ICategory;
+type IChildCategory = {
+  id: number;
+  parentId: number;
+  title: string;
+  position: number;
+};
+
+export { IParentCategory, IChildCategory };

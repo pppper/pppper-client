@@ -6,12 +6,12 @@ import { useHistory } from 'react-router-dom';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
-import ICategory from '../../types/category';
+import { IChildCategory } from '../../types/category';
 
 interface IMenuSliderProps {
   currentParentId: number;
   currentCategoryId: number;
-  childCategories: ICategory[];
+  childCategories: IChildCategory[];
 }
 
 const settings = {

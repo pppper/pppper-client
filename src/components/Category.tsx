@@ -2,19 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-import {
-    ReactComponent as OpenCloseIcon
-} from '../assets/icon/category/category_open_close_icon.svg';
+import { ReactComponent as OpenCloseIcon } from '../assets/icon/category/category_open_close_icon.svg';
 import { getChildCategories } from '../lib/api/category';
-import ICategory from '../types/category';
-
-interface ICategoryProps {
-  id: number;
-  title: string;
-}
+import { IChildCategory, IParentCategory } from '../types/category';
 
 interface ISubCategoryProps {
-  categories: ICategory[];
+  categories: IChildCategory[];
   parentId: number;
 }
 
@@ -22,8 +15,8 @@ interface IStyledCategoryProps {
   isSelected: boolean;
 }
 
-const Category: React.FC<ICategoryProps> = ({ id, title }) => {
-  const [childCategories, setChildCategories] = useState<ICategory[]>([]);
+const Category: React.FC<IParentCategory> = ({ id, title }) => {
+  const [childCategories, setChildCategories] = useState<IChildCategory[]>([]);
   const [isSelected, setIsSelected] = useState(false);
 
   const handleCategoryClicked = () => {
