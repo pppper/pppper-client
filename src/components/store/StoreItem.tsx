@@ -31,10 +31,10 @@ export const StoreItem: React.FC<ItemProps> = ({ product }) => {
           )}
           % {product.price}
         </div>
-        <div className="storeitem-saved-count-block">
+        <div className="storeitem-bookmark-count-block">
           <BookMarkIcon />
 
-          <div className="storeitem-saved-count">{product.books_count}</div>
+          <div className="storeitem-bookmark-count">{product.books_count}</div>
         </div>
       </div>
     </Container>
@@ -107,11 +107,11 @@ const Container = styled.div`
       margin-top: 3px;
     }
 
-    .storeitem-saved-count-block {
+    .storeitem-bookmark-count-block {
       display: flex;
       align-items: center;
 
-      .storeitem-saved-count {
+      .storeitem-bookmark-count {
         font-style: normal;
         line-height: 19px;
         letter-spacing: 0.55px;
