@@ -51,6 +51,7 @@ function App() {
         <Product />
         <SearchBar />
       </Route> */}
+      <Margin margin={76} />
       <NavigationBar />
     </ThemeProvider>
   );
