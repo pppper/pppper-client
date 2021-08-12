@@ -1,4 +1,4 @@
-interface ProductType {
+export default interface ProductType {
   id: number;
   title: string;
   price: number;
@@ -42,5 +42,3 @@ interface ProductType {
   tag_list: string[];
   brand_title: string;
 }
-
-export default ProductType;

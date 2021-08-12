@@ -14,18 +14,19 @@ interface IMenuSliderProps {
   childCategories: CategoryType[];
 }
 
+const settings = {
+  infinite: false,
+  centerPadding: '60px',
+  slidesToShow: 5,
+  swipeToSlide: true,
+  arrows: false,
+};
+
 const MenuSlider: React.FC<IMenuSliderProps> = ({
   currentParentId,
   currentCategoryId,
   childCategories,
 }) => {
-  const settings = {
-    infinite: false,
-    centerPadding: '60px',
-    slidesToShow: 5,
-    swipeToSlide: true,
-  };
-
   const history = useHistory();
 
   const handleClickMenuSliderItem = (childCategoryId: number) => {
