@@ -3,55 +3,38 @@ import styled, { css } from 'styled-components';
 import { CustomButton } from '../../components/Button';
 import ImagePlaceholder from '../../components/ImagePlaceholder';
 import { SizedBox } from '../../components/SizedBox';
+import { IApiCodiProposal } from '../../types/api/codiProposal.api';
+import CodiProposal from './CodiProposal';
 import ProductPicker from './ProductPicker';
 
 interface ICodiGenerationPageProps {}
 
-const proposalTags = [
-  '화성',
-  '가즈아',
-  '테슬라',
-  '사이버트럭',
-  '세미',
-  '모델X',
-  '전기차',
-  '다잃었소',
-  '비트코인',
-  '떡상',
-  '친환경',
-];
-
-const proposalDescription =
-  'Aliquip id eu aliqua nostrud. Proident minim sunt elit occaecat ut. Incididunt cillum sunt cillum tempor mollit commodo. Duis aliqua velit Lorem ea cillum ea.';
+// const sampleCodiProposal: IApiCodiProposal = [
+//   {
+//     id: 1,
+//     user_id: 2,
+//     is_confirm: true,
+//     bottom_size: null,
+//     top_size: null,
+//     comment: 'zzzzzzzzzz',
+//     user_style: ['미니멀'],
+//     created_at: '2021-08-09T17:57:36.161+09:00',
+//     updated_at: '2021-08-10T15:58:52.831+09:00',
+//     item_id: 65,
+//     place: ['소개팅'],
+//     occasion: ['카페', '레스토랑'],
+//     user_fit: '오버사이',
+//     height: '999',
+//     weight: '999',
+//     styles_count: 1,
+//     gender: 'male',
+//   },
+// ];
 
 const CodiGenerationPage: React.FC<ICodiGenerationPageProps> = () => {
   return (
     <Wrapper>
-      <ProposalRow>
-        <ProposalProfile>
-          <img
-            src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQU2JRbbl3LBOm_an3eI5iplFhOoLESyBwUfmWDO49BS1EYuGUE"
-            alt=""
-            className="profile-picture"
-          />
-          <SizedBox height={5}></SizedBox>
-          <span className="profile-name">X Æ A-12 아빠</span>
-        </ProposalProfile>
-        <SizedBox width={20}></SizedBox>
-        <ProposalTags>
-          {proposalTags.map((tag, index) => {
-            return <ProposalTag key={index}>#{tag}</ProposalTag>;
-          })}
-        </ProposalTags>
-      </ProposalRow>
-      <SizedBox height={16}></SizedBox>
-      <ProposalDescription>“ {proposalDescription} ”</ProposalDescription>
-      <SizedBox height={16}></SizedBox>
-      <ReferenceCodiSlider>
-        <ReferenceCodi></ReferenceCodi>
-        <ReferenceCodi></ReferenceCodi>
-        <ReferenceCodi></ReferenceCodi>
-      </ReferenceCodiSlider>
+      {/* <CodiProposal codiProposal={sampleCodiProposal}></CodiProposal> */}
       <SizedBox height={100}></SizedBox>
       <div>Editor</div>
       <ProductPicker></ProductPicker>
@@ -115,76 +98,6 @@ const ActionButton = styled.button`
   font-size: 16px;
   background-color: ${(props) => props.theme.colors.primary1};
   color: ${(props) => props.theme.colors.white};
-`;
-
-const ProposalRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  padding: 0 28px;
-`;
-
-const ProposalDescription = styled.div`
-  line-height: 1.43;
-  letter-spacing: 0.07px;
-  font-size: 14px;
-  padding: 0 28px;
-`;
-
-const ProposalProfile = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: center;
-
-  width: 80px;
-  flex-shrink: 0;
-
-  img.profile-picture {
-    width: 36px;
-    height: 36px;
-    object-fit: cover;
-    border-radius: 18px;
-  }
-
-  span.profile-name {
-    font-size: 11px;
-    color: #555561;
-  }
-`;
-
-const ProposalTags = styled.div`
-  text-align: left;
-`;
-
-const ProposalTag = styled.div`
-  display: inline-flex;
-  padding: 2px 6px;
-  border-radius: 4px;
-  background-color: ${(props) => props.theme.colors.gray7};
-
-  justify-content: center;
-  align-items: center;
-
-  font-size: 11px;
-
-  margin-right: 4px;
-  margin-bottom: 7.5px;
-`;
-
-const ReferenceCodiSlider = styled.div`
-  display: flex;
-  flex-direction: row;
-  overflow-x: scroll;
-  padding: 0 28px;
-`;
-
-const ReferenceCodi = styled(ImagePlaceholder)`
-  width: 220px;
-  height: 220px;
-  margin-right: 8px;
-  flex-shrink: 0;
 `;
 
 export const generateRandomColor = () => {
