@@ -2,16 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
 
-import { ReactComponent as InactiveHomeIcon } from '../../../assets/icon/gnb/gnb_inactive_home_icon.svg';
-import { ReactComponent as ActiveHomeIcon } from '../../../assets/icon/gnb/gnb_active_home_icon.svg';
-import { ReactComponent as InactiveCodiIcon } from '../../../assets/icon/gnb/gnb_inactive_codi_icon.svg';
-import { ReactComponent as ActiveCodiicon } from '../../../assets/icon/gnb/gnb_active_codi_icon.svg';
-import { ReactComponent as InactiveStoreIcon } from '../../../assets/icon/gnb/gnb_inactive_store_icon.svg';
-import { ReactComponent as ActiveStoreIcon } from '../../../assets/icon/gnb/gnb_active_store_icon.svg';
-import { ReactComponent as InactiveBookmarkIcon } from '../../../assets/icon/gnb/gnb_inactive_bookmark_icon.svg';
-import { ReactComponent as ActiveBookmarkIcon } from '../../../assets/icon/gnb/gnb_active_bookmark_icon.svg';
-import { ReactComponent as InactiveProfileIcon } from '../../../assets/icon/gnb/gnb_inactive_profile_icon.svg';
-import { ReactComponent as ActiveProfileIcon } from '../../../assets/icon/gnb/gnb_active_profile_icon.svg';
+import {
+  InactiveHomeIcon,
+  ActiveHomeIcon,
+  InactiveCodiIcon,
+  ActiveCodiicon,
+  InactiveStoreIcon,
+  ActiveStoreIcon,
+  InactiveBookmarkIcon,
+  ActiveBookmarkIcon,
+  InactiveProfileIcon,
+  ActiveProfileIcon,
+} from './icons';
 
 interface INavigationBarProps {}
 
@@ -19,39 +21,56 @@ const NavigationBar: React.FC<INavigationBarProps> = () => {
   const location = useLocation();
   const { pathname } = location;
 
-  const isHome = pathname === '/';
-  const isCodi = pathname.split('/')[1] === 'codi';
-  const isStore = pathname.split('/')[1] === 'store';
-  const isBookmark = pathname.split('/')[1] === 'bookmark';
-  const isProfile = pathname.split('/')[1] === 'mypage';
+  const navigationMenus = [
+    {
+      id: '',
+      text: '홈',
+      activeIcon: <ActiveHomeIcon />,
+      inActiveIcon: <InactiveHomeIcon />,
+    },
+    {
+      id: 'codi',
+      text: '코디',
+      activeIcon: <ActiveCodiicon />,
+      inActiveIcon: <InactiveCodiIcon />,
+    },
+    {
+      id: 'store',
+      text: '스토어',
+      activeIcon: <ActiveStoreIcon />,
+      inActiveIcon: <InactiveStoreIcon />,
+    },
+    {
+      id: 'bookmark',
+      text: '저장',
+      activeIcon: <ActiveBookmarkIcon />,
+      inActiveIcon: <InactiveBookmarkIcon />,
+    },
+    {
+      id: 'profile',
+      text: '프로필',
+      activeIcon: <ActiveProfileIcon />,
+      inActiveIcon: <InactiveProfileIcon />,
+    },
+  ];
 
   return (
     <NavigationBarWrapper>
-      <Link to="/" className="gnb-icon-label-wrapper">
-        {isHome ? <ActiveHomeIcon /> : <InactiveHomeIcon />}
-        <GNBLabel active={isHome}>홈</GNBLabel>
-      </Link>
-      <Link className="gnb-icon-label-wrapper" to="/codi">
-        {isCodi ? <ActiveCodiicon /> : <InactiveCodiIcon />}
-        <GNBLabel active={isCodi}>코디</GNBLabel>
-      </Link>
-      <Link className="gnb-icon-label-wrapper" to="/store">
-        {isStore ? <ActiveStoreIcon /> : <InactiveStoreIcon />}
-        <GNBLabel active={isStore}>스토어</GNBLabel>
-      </Link>
-      <Link className="gnb-icon-label-wrapper" to="/bookmark">
-        {isBookmark ? <ActiveBookmarkIcon /> : <InactiveBookmarkIcon />}
-        <GNBLabel active={isBookmark}>저장</GNBLabel>
-      </Link>
-      <Link className="gnb-icon-label-wrapper" to="/mypage">
-        {isProfile ? <ActiveProfileIcon /> : <InactiveProfileIcon />}
-        <GNBLabel active={isProfile}>프로필</GNBLabel>
-      </Link>
+      {navigationMenus.map((navigationMenu) => (
+        <Link to={`/${navigationMenu.id}`} className="gnb-icon-label-wrapper">
+          {pathname.split('/')[1] === navigationMenu.id
+            ? navigationMenu.activeIcon
+            : navigationMenu.inActiveIcon}
+          <GlobalNavigationBarLabel
+            active={pathname.split('/')[1] === navigationMenu.id}
+          >
+            {navigationMenu.text}
+          </GlobalNavigationBarLabel>
+        </Link>
+      ))}
     </NavigationBarWrapper>
   );
 };
-
-export default NavigationBar;
 
 const NavigationBarWrapper = styled.div`
   display: flex;
@@ -80,7 +99,7 @@ const NavigationBarWrapper = styled.div`
   }
 `;
 
-const GNBLabel = styled.p<{ active: boolean }>`
+const GlobalNavigationBarLabel = styled.p<{ active: boolean }>`
   font-size: 10px;
   font-weight: bold;
   font-stretch: normal;
@@ -90,3 +109,5 @@ const GNBLabel = styled.p<{ active: boolean }>`
   user-select: none;
   color: ${(props) => (props.active ? `black` : props.theme.colors.gray3)};
 `;
+
+export default NavigationBar;
