@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { DefaultTheme, ThemeProvider } from 'styled-components';
 import { Route } from 'react-router-dom';
-
-import StoreHomePage from './pages/StoreHomePage';
-import StoreCategoryPage from './pages/StoreCategoryPage';
-import ProductCollectionPage from './pages/store/category/ProductCollectionPage';
+import { DefaultTheme, ThemeProvider } from 'styled-components';
 
 import { useAlert } from './lib/hooks/useAlert';
-
+import CodyGenerationPage from './pages/CodyGenerationPage';
+import ProductCollectionPage from './pages/store/category/ProductCollectionPage';
+import StoreCategoryPage from './pages/StoreCategoryPage';
+import StoreHomePage from './pages/StoreHomePage';
 import { lightTheme } from './styles/theme';
 import NavigationBar from './components/base/gnb/GlobalNavigationBar';
 import { Margin } from './components/Margin';
@@ -24,6 +23,10 @@ function App() {
       </Route>
       <Route path="/store/category" exact>
         <StoreCategoryPage />
+      </Route>
+
+      <Route path="/cody/new">
+        <CodyGenerationPage />
       </Route>
       <Route
         path="/store/category/:id"
