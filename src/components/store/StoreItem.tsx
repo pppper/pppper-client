@@ -2,11 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { ReactComponent as BookMarkIcon } from '../../assets/icon/store/store_bookmark_icon.svg';
-
-import ProductType from '../../types/product';
+import { IApiProduct } from '../../types/api/product.api';
 
 interface ItemProps {
-  product: ProductType;
+  product: IApiProduct;
 }
 
 export const StoreItem: React.FC<ItemProps> = ({ product }) => {

@@ -18,7 +18,7 @@ const apiClient = axios.create({
 
 apiClient.interceptors.response.use(
   (res) => {
-    return res;
+    return res.data;
   },
   (err: AxiosError) => {
     //오류 응답 처리 루틴 설정

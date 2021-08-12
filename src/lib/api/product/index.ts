@@ -1,4 +1,5 @@
-import apiClient from './apiClient';
+import { IApiProduct } from '../../../types/api/product.api';
+import apiClient from '../apiClient';
 
 interface IGetProductsProps {
   page?: number;
@@ -9,5 +10,5 @@ interface IGetProductsProps {
   select_content?: any;
 }
 
-export const getProducts = (props: IGetProductsProps) =>
+export const getProducts = (props: IGetProductsProps): Promise<IApiProduct[]> =>
   apiClient.get(`/items`, { params: props });
