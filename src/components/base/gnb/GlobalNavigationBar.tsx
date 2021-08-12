@@ -24,30 +24,35 @@ const NavigationBar: React.FC<INavigationBarProps> = () => {
   const navigationMenus = [
     {
       id: '',
+      path: '',
       text: '홈',
       activeIcon: <ActiveHomeIcon />,
       inActiveIcon: <InactiveHomeIcon />,
     },
     {
       id: 'codi',
+      path: '/codi',
       text: '코디',
       activeIcon: <ActiveCodiicon />,
       inActiveIcon: <InactiveCodiIcon />,
     },
     {
       id: 'store',
+      path: '/store',
       text: '스토어',
       activeIcon: <ActiveStoreIcon />,
       inActiveIcon: <InactiveStoreIcon />,
     },
     {
       id: 'bookmark',
+      path: '/bookmark',
       text: '저장',
       activeIcon: <ActiveBookmarkIcon />,
       inActiveIcon: <InactiveBookmarkIcon />,
     },
     {
       id: 'profile',
+      path: '/profile',
       text: '프로필',
       activeIcon: <ActiveProfileIcon />,
       inActiveIcon: <InactiveProfileIcon />,
@@ -57,7 +62,7 @@ const NavigationBar: React.FC<INavigationBarProps> = () => {
   return (
     <NavigationBarWrapper>
       {navigationMenus.map((navigationMenu) => (
-        <Link to={`/${navigationMenu.id}`} className="gnb-icon-label-wrapper">
+        <Link to={navigationMenu.path} className="gnb-icon-label-wrapper">
           {pathname.split('/')[1] === navigationMenu.id
             ? navigationMenu.activeIcon
             : navigationMenu.inActiveIcon}
