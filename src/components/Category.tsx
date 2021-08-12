@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 
-import { ReactComponent as OpenCloseIcon } from '../assets/icon/category/category_open_close_icon.svg';
-
-import { CategoryFetchers } from '../fetchers/categories';
-
-import CategoryType from '../types/category';
+import {
+    ReactComponent as OpenCloseIcon
+} from '../assets/icon/category/category_open_close_icon.svg';
+import { getChildCategories } from '../lib/api/category';
+import ICategory from '../types/category';
 
 interface ICategoryProps {
   id: number;
@@ -14,7 +14,7 @@ interface ICategoryProps {
 }
 
 interface ISubCategoryProps {
-  categories: CategoryType[];
+  categories: ICategory[];
   parentId: number;
 }
 
@@ -23,7 +23,7 @@ interface IStyledCategoryProps {
 }
 
 const Category: React.FC<ICategoryProps> = ({ id, title }) => {
-  const [childCategories, setChildCategories] = useState<CategoryType[]>([]);
+  const [childCategories, setChildCategories] = useState<ICategory[]>([]);
   const [isSelected, setIsSelected] = useState(false);
 
   const handleCategoryClicked = () => {
@@ -33,7 +33,7 @@ const Category: React.FC<ICategoryProps> = ({ id, title }) => {
   useEffect(() => {
     (async () => {
       setChildCategories(
-        await CategoryFetchers.getChilds({
+        await getChildCategories({
           parent_id: id,
           type: 'child',
         })

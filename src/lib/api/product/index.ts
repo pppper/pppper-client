@@ -1,5 +1,6 @@
-import { IApiProduct } from '../../../types/api/product.api';
-import apiClient from '../apiClient';
+import IProduct from '../../../types/product';
+import apiClient, { extractData } from '../apiClient';
+import { IApiProduct, IApiProduct2 } from './type';
 
 interface IGetProductsProps {
   page?: number;
@@ -10,11 +11,46 @@ interface IGetProductsProps {
   select_content?: any;
 }
 
-export const getProducts = (props: IGetProductsProps): Promise<IApiProduct[]> =>
-  apiClient.get(`/items`, { params: props });
+export const getProducts = (props: IGetProductsProps): Promise<IProduct[]> =>
+  apiClient
+    .get(`/items`, { params: props })
+    .then(extractData)
+    .then((products: IApiProduct[]): IProduct[] => {
+      return products as IProduct[];
+    });
 
 interface IGetProductByIdProps {
   product_id: number;
 }
-export const getProductByIdAPI = (props: IGetProductByIdProps) =>
-  apiClient.get(`/items/${props.product_id}`);
+
+export const getProductById = (
+  props: IGetProductByIdProps
+): Promise<IProduct> =>
+  apiClient
+    .get(`/items/${props.product_id}`)
+    .then(extractData)
+    .then((apiProduct: IApiProduct2): IProduct => {
+      // let product: IProduct = {
+      //   bookmarksCount: apiProduct.item.books_count,
+      //   brandId: apiProduct.br,
+      //   brandName: string,
+      //   categoryId: number,
+      //   codiImage: string,
+      //   detailImages: string[],
+      //   id: number,
+      //   likesCount: number,
+      //   mainImage: string,
+      //   originalPrice: number,
+      //   price: number,
+      //   tags: string[],
+      //   title: string,
+      // };
+      // product.image = apiProduct.item.image.url;
+      // product.detail_images = apiProduct.item.detail_images.map(
+      //   (image) => image.url
+      // );
+      // product.main_image = apiProduct.item.main_image.url;
+      // product.main_image = apiProduct.item.main_image.url;
+
+      return product as IProduct;
+    });

@@ -5,6 +5,12 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: "Pretendard";
   }
+
+  /* .className {
+  font-family: "SpoqaHanSansNeo";
+
+  }
+   */
   body {
     margin: 0;
   }

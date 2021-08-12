@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import Category from '../../../components/Category';
 import Header from '../../../components/base/Header/Header';
-
-import { CategoryFetchers } from '../../../fetchers/categories';
+import Category from '../../../components/Category';
+import { getParentCategories } from '../../../lib/api/category';
 
 interface IStoreCategoryPageProps {}
 
@@ -13,7 +12,7 @@ const StoreCategoryPage: React.FC<IStoreCategoryPageProps> = () => {
 
   useEffect(() => {
     (async () => {
-      const data = await CategoryFetchers.getParents({ type: 'parent' });
+      const data = await getParentCategories({ type: 'parent' });
       setParentCategory(data);
     })();
   }, []);

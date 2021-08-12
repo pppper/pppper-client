@@ -1,44 +1,19 @@
-export default interface ProductType {
+import { IApiProduct } from '../lib/api/product/type';
+
+interface IProduct {
+  bookmarksCount: number;
+  brandId: number;
+  brandName: string;
+  categoryId: number;
+  codiImage: string;
+  detailImages: string[];
   id: number;
-  title: string;
+  likesCount: number;
+  mainImage: string;
+  originalPrice: number;
   price: number;
-  video: string;
-  created_at: string;
-  updated_at: string;
-  category_id: number;
-  description: string;
-  image: string;
-  status: string;
-  reviews_average: string;
-  reviews_count: number;
-  view_count: number;
-  zipcode: number;
-  address1: string;
-  address2: string;
-  start_at: string;
-  end_at: string;
-  _type: any;
-  lat: any;
-  lng: any;
-  brand_id: number;
-  competitor_price: number;
-  shipping: number;
-  admin_user_id: number;
-  video_link: string;
-  detail_image1: string;
-  detail_image2: string;
-  main_image: string;
-  item_status: string;
-  size_array: any[];
-  detail_images: string[];
-  item_type: string;
-  item_link: string;
-  style_image: string;
-  influencer_show: boolean;
-  liked_at: string;
-  likes_count: number;
-  books_count: number;
-  musinsa_id: number;
-  tag_list: string[];
-  brand_title: string;
+  tags: string[];
+  title: string;
 }
+
+export default IProduct;

@@ -6,13 +6,14 @@ import Header from '../../../components/base/Header/Header';
 import StoreItem from '../../../components/store/StoreItem';
 import MenuSlider from '../../../components/store/StoreMenuSlider';
 import { getProducts } from '../../../lib/api/product';
-import { IApiProduct } from '../../../types/api/product.api';
+import { IApiProduct } from '../../../lib/api/product/type';
+import IProduct from '../../../types/product';
 
 interface IProductCollectionPageProps {}
 
 const ProductCollectionPage: React.FC<IProductCollectionPageProps> = () => {
   const location = useLocation();
-  const [productList, setProductList] = useState<IApiProduct[]>([]);
+  const [productList, setProductList] = useState<IProduct[]>([]);
 
   const { currentCategoryId, currentParentId, childCategories } =
     location.state;

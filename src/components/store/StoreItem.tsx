@@ -3,11 +3,11 @@ import { useHistory } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import { ReactComponent as BookMarkIcon } from '../../assets/icon/store/store_bookmark_icon.svg';
-import { IApiProduct } from '../../types/api/product.api';
+import IProduct from '../../types/product';
 
 type StoreItemSizeType = 'small' | 'large';
 interface ItemProps {
-  product: IApiProduct;
+  product: IProduct;
   type: StoreItemSizeType;
 }
 

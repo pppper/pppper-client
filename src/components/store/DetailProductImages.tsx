@@ -1,41 +1,24 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-
-import { Margin } from '../Margin';
 import styled from 'styled-components';
 
-type detailImage = {
-  url: URL;
-  thumb: {
-    url: null;
-  };
-  square: {
-    url: null;
-  };
-  banner: {
-    url: null;
-  };
-  small_banner: {
-    url: null;
-  };
-};
+import IProduct from '../../types/product';
 
 interface IDetailProductImages {
-  detail_images: detailImage[];
+  // detail_images: detailImage[];
+  product: IProduct;
 }
 
-const DetailProductImages: React.FC<IDetailProductImages> = ({
-  detail_images,
-}) => {
+const DetailProductImages: React.FC<IDetailProductImages> = ({ product }) => {
   return (
     <DetailProductImagesContainer className="flex-col">
       <div className="detail-product-image-title">상세 정보</div>
       <div className="detail-product-images-wrapper flex-col">
-        {detail_images.map((image) => {
+        {product.detail_images.map((image) => {
           return (
             <img
               className="product-detail-image"
-              src={'https://api.pppper.com' + image.url}
+              src={'https://api.pppper.com' + image}
             />
           );
         })}

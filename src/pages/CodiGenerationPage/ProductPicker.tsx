@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { IonSearchbar } from '@ionic/react';
 
 import { SizedBox } from '../../components/SizedBox';
-import { IApiProduct } from '../../types/api/product.api';
+import IProduct from '../../types/product';
 import ProductItem from './ProductItem';
 
 interface IMenu {}
@@ -32,7 +32,7 @@ const ProductPicker: React.FC<IProductPickerProps> = () => {
 
     // setProducts()
   }, []);
-  const [products, setProducts] = useState<IApiProduct[]>([]);
+  const [products, setProducts] = useState<IProduct[]>([]);
   const [activeMenuIndex, setActiveMenuIndex] = useState<number>(0);
   const [selectedProductIds, setSelectedProductIds] = useState<Set<number>>(
     new Set()

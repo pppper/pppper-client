@@ -3,11 +3,11 @@ import styled from 'styled-components/macro';
 
 import ImagePlaceholder from '../../components/ImagePlaceholder';
 import { SizedBox } from '../../components/SizedBox';
-import { IApiProduct } from '../../types/api/product.api';
+import IProduct from '../../types/product';
 import { resolveImageUrl } from '../../utils/resolveUrl';
 
 interface IProductItemProps {
-  product: IApiProduct;
+  product: IProduct;
   selected?: boolean;
   starred?: boolean;
   onStarClick?: React.MouseEventHandler;
@@ -17,17 +17,17 @@ interface IProductItemProps {
 const ProductItem: React.FC<IProductItemProps> = (props) => {
   const { product, selected, starred, onStarClick, onToggle } = props;
   const discountPercentage = Math.floor(
-    ((product.price - product.competitor_price) / product.price) * 100
+    ((product.price - product.originalPrice) / product.price) * 100
   );
   return (
     <Wrapper onClick={onToggle}>
       <ProductImage
         selected={selected}
-        src={resolveImageUrl(product.image)}
+        src={resolveImageUrl(product.mainImage)}
       ></ProductImage>
       <SizedBox height={6} />
       <Metadata>
-        <Brand>{product.brand_title}</Brand>
+        <Brand>{product.brandName}</Brand>
         <SizedBox height={2}></SizedBox>
         <PriceRow>
           <span className="price">{product.price}원 </span>

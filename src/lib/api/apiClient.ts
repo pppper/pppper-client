@@ -18,7 +18,7 @@ const apiClient = axios.create({
 
 apiClient.interceptors.response.use(
   (res) => {
-    return res.data;
+    return res;
   },
   (err: AxiosError) => {
     //오류 응답 처리 루틴 설정
@@ -27,3 +27,5 @@ apiClient.interceptors.response.use(
 );
 
 export default apiClient;
+
+export const extractData = (response) => response.data;

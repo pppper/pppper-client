@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import { AlertContextProvider } from './lib/providers/AlertProvider';
 import store from './modules/store';
-import { GlobalStyle } from './styles/GlobalStyle';
+import { GlobalStyle } from './styles/global';
 
 ReactDOM.render(
   <React.StrictMode>

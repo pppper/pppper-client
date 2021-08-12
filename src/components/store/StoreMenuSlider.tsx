@@ -1,17 +1,17 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
-import Slider from 'react-slick';
-
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import CategoryType from '../../types/category';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import Slider from 'react-slick';
+import styled from 'styled-components';
+
+import ICategory from '../../types/category';
 
 interface IMenuSliderProps {
   currentParentId: number;
   currentCategoryId: number;
-  childCategories: CategoryType[];
+  childCategories: ICategory[];
 }
 
 const settings = {
