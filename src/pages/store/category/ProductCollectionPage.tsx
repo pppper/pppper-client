@@ -40,7 +40,7 @@ const ProductCollectionPage: React.FC<IProductCollectionPageProps> = () => {
       />
       <StoreItemWrapper>
         {productList.map((product) => (
-          <StoreItem key={product.id} product={product} />
+          <StoreItem key={product.id} product={product} type={'large'} />
         ))}
       </StoreItemWrapper>
     </>

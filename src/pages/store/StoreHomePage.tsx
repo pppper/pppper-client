@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { DividedList } from '../components/DividedList';
-import { BrandIntroduction } from '../components/BrandIntroduction';
-import { Margin } from '../components/Margin';
+import { DividedList } from '../../components/DividedList';
+import { BrandIntroduction } from '../../components/BrandIntroduction';
+import { Margin } from '../../components/Margin';
 
 import { IonSearchbar } from '@ionic/react';
 
-import { ReactComponent as ShoppingCartIcon } from '../assets/icon/header/header_shopping_cart_icon.svg';
+import { ReactComponent as ShoppingCartIcon } from '../../assets/icon/header/header_shopping_cart_icon.svg';
 
 interface IStoreHomeProps {}
 
