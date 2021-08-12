@@ -7,11 +7,11 @@ import { ReactComponent as Star } from '../../assets/icon/detail/detail_star_ico
 import { Margin } from '../Margin';
 import styled from 'styled-components';
 
-interface IDetailProductionInformation {
+interface IDetailProductionInformationProps {
   product: ProductType;
 }
 
-const DetailProductInformation: React.FC<IDetailProductionInformation> = ({
+const DetailProductInformation: React.FC<IDetailProductionInformationProps> = ({
   product,
 }) => {
   return (

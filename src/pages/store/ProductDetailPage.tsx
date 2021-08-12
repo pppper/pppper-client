@@ -8,6 +8,7 @@ import Header from '../../components/base/Header/Header';
 import { Margin } from '../../components/Margin';
 import DetailProductInformation from '../../components/store/DetailProductInformation';
 import ShippingInformation from '../../components/store/ShippingInformation';
+import BrandLink from '../../components/store/BrandLink';
 
 interface IProductDetailPageProps {}
 
@@ -21,7 +22,7 @@ const ProductDetailPage: React.FC<IProductDetailPageProps> = () => {
         const { data } = await getProductByIdAPI({
           product_id: productId,
         });
-        setProduct(data);
+        setProduct(data.item);
       } catch (error) {}
     };
     getProductById(productId);
@@ -31,10 +32,11 @@ const ProductDetailPage: React.FC<IProductDetailPageProps> = () => {
       <Header hasRightIcons hasTitle={false} title="" />
       <img
         className="detail-product-main-image"
-        src={'https://api.pppper.com' + product.item.image.url}
+        src={'https://api.pppper.com' + product.image.url}
       />
-      <DetailProductInformation product={product.item} />
+      <DetailProductInformation product={product} />
       <ShippingInformation />
+      <BrandLink brand_id={product.brand_id} />
     </StyledProductDetail>
   ) : (
     <></>

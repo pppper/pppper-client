@@ -4,9 +4,9 @@ import { useHistory } from 'react-router-dom';
 import { Margin } from '../Margin';
 import styled from 'styled-components';
 
-interface IShippingInformation {}
+interface IShippingInformationProps {}
 
-const ShippingInformation: React.FC<IShippingInformation> = () => {
+const ShippingInformation: React.FC<IShippingInformationProps> = () => {
   return (
     <StyledContainer className="flex-col">
       <div className="shipping-section-title">배송 정보</div>
