@@ -3,12 +3,12 @@ enum Gender {
   FEMALE = 'female',
 }
 
-interface IReviews {
+interface IReview {
   id: number;
   nickName: string;
   createdDate: string;
   grade: number;
-  content: string;
+  description: string;
   images: string[];
   height: number;
   weight: number;

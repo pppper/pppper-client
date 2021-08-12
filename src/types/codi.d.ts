@@ -3,7 +3,7 @@ import IProduct from './product';
 export interface ICodi {
   id: number;
   name: string;
-  description: string[];
+  description: string;
   products: IProduct[];
   bookmarksCount: number;
   likesCount: number;
