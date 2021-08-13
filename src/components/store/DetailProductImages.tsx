@@ -2,19 +2,18 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-import IProduct from '../../types/product';
-
 interface IDetailProductImages {
-  // detail_images: detailImage[];
-  product: IProduct;
+  detailImages: string[];
 }
 
-const DetailProductImages: React.FC<IDetailProductImages> = ({ product }) => {
+const DetailProductImages: React.FC<IDetailProductImages> = ({
+  detailImages,
+}) => {
   return (
     <DetailProductImagesContainer className="flex-col">
       <div className="detail-product-image-title">상세 정보</div>
       <div className="detail-product-images-wrapper flex-col">
-        {product.detail_images.map((image) => {
+        {detailImages.map((image) => {
           return (
             <img
               className="product-detail-image"

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import ProductType from '../../types/product';
+import IProduct from '../../types/product';
 
 import { ReactComponent as ShareIcon } from '../../assets/icon/detail/detail_share_icon.svg';
 import { ReactComponent as Star } from '../../assets/icon/detail/detail_star_icon.svg';
@@ -8,7 +8,7 @@ import { Margin } from '../Margin';
 import styled from 'styled-components';
 
 interface IDetailProductionInformationProps {
-  product: ProductType;
+  product: IProduct;
 }
 
 const DetailProductInformation: React.FC<IDetailProductionInformationProps> = ({
