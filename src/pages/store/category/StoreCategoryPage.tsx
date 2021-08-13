@@ -3,20 +3,26 @@ import styled from 'styled-components';
 
 import Header from '../../../components/base/Header/Header';
 import Category from '../../../components/Category';
-import { getParentCategories } from '../../../lib/api/category';
+import { ICategory } from '../../../types/category';
+// import { getParentCategories } from '../../../lib/api/category';
 
+import { categories } from '../../../utils/mocks/mockCategories';
 interface IStoreCategoryPageProps {}
 
 const StoreCategoryPage: React.FC<IStoreCategoryPageProps> = () => {
-  const [parentCategory, setParentCategory] = useState([]);
+  const [parentCategory, setParentCategory] = useState<ICategory[]>([]);
 
+  // useEffect(() => {
+  //   (async () => {
+  //     const data = await getParentCategories({ type: 'parent' });
+  //     setParentCategory(data);
+  //   })();
+  // }, []);
   useEffect(() => {
-    (async () => {
-      const data = await getParentCategories({ type: 'parent' });
-      setParentCategory(data);
-    })();
+    setParentCategory(
+      categories.filter((category) => category.parentCategory === null)
+    );
   }, []);
-
   return (
     <Container>
       <Header
@@ -28,13 +34,7 @@ const StoreCategoryPage: React.FC<IStoreCategoryPageProps> = () => {
       <div className="category-list">
         {parentCategory &&
           parentCategory.map((category) => {
-            return (
-              <Category
-                id={category.id}
-                title={category.title}
-                key={category.id}
-              />
-            );
+            return <Category key={category.id} category={category} />;
           })}
       </div>
     </Container>
