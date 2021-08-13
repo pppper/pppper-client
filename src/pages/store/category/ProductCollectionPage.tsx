@@ -5,44 +5,55 @@ import styled from 'styled-components';
 import Header from '../../../components/base/Header/Header';
 import StoreItem from '../../../components/store/StoreItem';
 import MenuSlider from '../../../components/store/StoreMenuSlider';
+
 import { getProducts } from '../../../lib/api/product';
 import { IApiProduct } from '../../../lib/api/product/type';
+
 import IProduct from '../../../types/product';
+
+import { mockProductList } from '../../../utils/mocks/mockProductList';
 
 interface IProductCollectionPageProps {}
 
 const ProductCollectionPage: React.FC<IProductCollectionPageProps> = () => {
   const location = useLocation();
-  const [productList, setProductList] = useState<IProduct[]>([]);
+  // const [productList, setProductList] = useState<IProduct[]>([]);
 
-  const { currentCategoryId, currentParentId, childCategories } =
+  const { currentCategoryId, currentParentCategoryName, childCategories } =
     location.state;
 
-  const getProductList = async () => {
-    try {
-      const products = await getProducts({
-        category_id: currentCategoryId,
-      });
-      setProductList(products);
-    } catch (error) {}
-  };
+  // const getProductList = async () => {
+  //   try {
+  //     const products = await getProducts({
+  //       category_id: currentCategoryId,
+  //     });
+  //     setProductList(products);
+  //   } catch (error) {}
+  // };
 
-  useEffect(() => {
-    getProductList();
-  }, [location.pathname]);
+  // const getProductListByCategory=()=>{
+  //   setProductList()
+  // }
+
+  // useEffect(() => {
+  //   getProductListByCategory();
+  // }, [location.pathname]);
 
   return (
     <>
-      <Header title={'상의'} hasRightIcons hasTitle />
+      <Header title={currentParentCategoryName} hasRightIcons hasTitle />
       <MenuSlider
         currentCategoryId={currentCategoryId}
-        currentParentId={currentParentId}
+        currentParentCategoryName={currentParentCategoryName}
         childCategories={childCategories}
       />
       <StoreItemWrapper>
-        {productList.map((product) => (
-          <StoreItem key={product.id} product={product} type={'large'} />
-        ))}
+        {mockProductList.map(
+          (product) =>
+            product.categoryId === currentCategoryId && (
+              <StoreItem key={product.id} product={product} type={'large'} />
+            )
+        )}
       </StoreItemWrapper>
     </>
   );

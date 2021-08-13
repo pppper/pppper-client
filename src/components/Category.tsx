@@ -50,7 +50,10 @@ const Category: React.FC<ICategoryProps> = ({ category }) => {
         <OpenCloseIcon className="open-close-effect" />
       </div>
       {isSelected ? (
-        <SubCategory parentId={category.id} categories={childCategories} />
+        <SubCategory
+          parentCategoryName={category.name}
+          categories={childCategories}
+        />
       ) : null}
     </StyledCategory>
   );
@@ -60,21 +63,24 @@ export default Category;
 
 interface ISubCategoryProps {
   categories: ICategory[];
-  parentId: number;
+  parentCategoryName: string;
 }
 
-const SubCategory: React.FC<ISubCategoryProps> = ({ categories, parentId }) => {
+const SubCategory: React.FC<ISubCategoryProps> = ({
+  categories,
+  parentCategoryName,
+}) => {
   const history = useHistory();
 
   const handleCategoryClicked = (e) => {
-    // history.push({
-    //   pathname: `/store/category/${e.target.id}`,
-    //   state: {
-    //     currentCategoryId: Number(e.target.id),
-    //     currentParentId: Number(parentId),
-    //     childCategories: categories,
-    //   },
-    // });
+    history.push({
+      pathname: `/store/category/${e.target.id}`,
+      state: {
+        currentCategoryId: Number(e.target.id),
+        currentParentCategoryName: parentCategoryName,
+        childCategories: categories,
+      },
+    });
   };
 
   return (

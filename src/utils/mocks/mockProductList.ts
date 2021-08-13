@@ -197,7 +197,7 @@ export const mockProductList: IProduct[] = [
   },
   {
     id: 7,
-    categoryId: 12,
+    categoryId: 20,
     title: 'epke flat(Deep sleep)_OK1DX21001BLK',
     price: 15000,
     originalPrice: 20000,
@@ -226,7 +226,7 @@ export const mockProductList: IProduct[] = [
   },
   {
     id: 8,
-    categoryId: 12,
+    categoryId: 20,
     title: 'epke flat(Deep sleep)_OK1DX21001BLK',
     price: 15000,
     originalPrice: 20000,
@@ -255,7 +255,7 @@ export const mockProductList: IProduct[] = [
   },
   {
     id: 9,
-    categoryId: 12,
+    categoryId: 21,
     title: 'epke flat(Deep sleep)_OK1DX21001BLK',
     price: 15000,
     originalPrice: 20000,
