@@ -103,6 +103,8 @@ const StoreItemWrapper = styled.div<{ type: StoreItemSizeType }>`
     }
 
     .storeitem-product-title {
+      height: 24px;
+
       font-size: 10px;
       font-style: normal;
       line-height: 12px;

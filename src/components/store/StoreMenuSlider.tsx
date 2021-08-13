@@ -9,8 +9,8 @@ import styled from 'styled-components';
 import { ICategory } from '../../types/category';
 
 interface IMenuSliderProps {
-  currentParentId: number;
   currentCategoryId: number;
+  currentParentCategoryName: string;
   childCategories: ICategory[];
 }
 
@@ -23,8 +23,8 @@ const settings = {
 };
 
 const MenuSlider: React.FC<IMenuSliderProps> = ({
-  currentParentId,
   currentCategoryId,
+  currentParentCategoryName,
   childCategories,
 }) => {
   const history = useHistory();
@@ -34,7 +34,7 @@ const MenuSlider: React.FC<IMenuSliderProps> = ({
       pathname: `/store/category/${childCategoryId}`,
       state: {
         currentCategoryId: Number(childCategoryId),
-        currentParentId: Number(currentParentId),
+        currentParentCategoryName: currentParentCategoryName,
         childCategories,
       },
     });
@@ -42,27 +42,21 @@ const MenuSlider: React.FC<IMenuSliderProps> = ({
 
   return (
     <MenuSliderWrapper {...settings}>
-      {childCategories.map((childCategory) =>
-        childCategory.id === currentCategoryId ? (
-          <div
-            className="menu-slider-item-wrapper"
-            key={childCategory.id}
-            onClick={() => handleClickMenuSliderItem(childCategory.id)}
-          >
+      {childCategories.map((childCategory) => (
+        <div
+          className="menu-slider-item-wrapper"
+          key={childCategory.id}
+          onClick={() => handleClickMenuSliderItem(childCategory.id)}
+        >
+          {childCategory.id === currentCategoryId ? (
             <p className="menu-slider-item-label selected">
               {childCategory.name}
             </p>
-          </div>
-        ) : (
-          <div
-            className="menu-slider-item-wrapper"
-            key={childCategory.id}
-            onClick={() => handleClickMenuSliderItem(childCategory.id)}
-          >
+          ) : (
             <p className="menu-slider-item-label">{childCategory.name}</p>
-          </div>
-        )
-      )}
+          )}
+        </div>
+      ))}
     </MenuSliderWrapper>
   );
 };
