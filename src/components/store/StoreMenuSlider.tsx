@@ -6,12 +6,12 @@ import { useHistory } from 'react-router-dom';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
-import { IChildCategory } from '../../types/category';
+import { ICategory } from '../../types/category';
 
 interface IMenuSliderProps {
   currentParentId: number;
   currentCategoryId: number;
-  childCategories: IChildCategory[];
+  childCategories: ICategory[];
 }
 
 const settings = {
@@ -50,7 +50,7 @@ const MenuSlider: React.FC<IMenuSliderProps> = ({
             onClick={() => handleClickMenuSliderItem(childCategory.id)}
           >
             <p className="menu-slider-item-label selected">
-              {childCategory.title}
+              {childCategory.name}
             </p>
           </div>
         ) : (
@@ -59,7 +59,7 @@ const MenuSlider: React.FC<IMenuSliderProps> = ({
             key={childCategory.id}
             onClick={() => handleClickMenuSliderItem(childCategory.id)}
           >
-            <p className="menu-slider-item-label">{childCategory.title}</p>
+            <p className="menu-slider-item-label">{childCategory.name}</p>
           </div>
         )
       )}
