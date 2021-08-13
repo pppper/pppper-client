@@ -14,7 +14,7 @@ const DetailProductImages: React.FC<IDetailProductImages> = ({ product }) => {
     <DetailProductImagesContainer className="flex-col">
       <div className="detail-product-image-title">상세 정보</div>
       <div className="detail-product-images-wrapper flex-col">
-        {product.detail_images.map((image) => {
+        {product.detailImages.map((image) => {
           return (
             <img
               className="product-detail-image"

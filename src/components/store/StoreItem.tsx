@@ -46,15 +46,12 @@ export const StoreItem: React.FC<ItemProps> = ({ product, type }) => {
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfo5ggO-mCx7vbS7DrncVRy6G1BXGMbgzi0g&usqp=CAU"
       />
       <div className="storeitem-flex-column storeitem-info-container">
-        <div className="storeitem-brand">{product.brand_title}</div>
+        <div className="storeitem-brand">{product.brandName}</div>
         <div className="storeitem-product-title">{product.title}</div>
-        <div className="storeitem-original-price">
-          {product.competitor_price}
-        </div>
+        <div className="storeitem-original-price">{product.originalPrice}</div>
         <div className="storeitem-saled-price">
           {Math.round(
-            ((product.competitor_price - product.price) /
-              product.competitor_price) *
+            ((product.originalPrice - product.price) / product.originalPrice) *
               100
           )}
           % {product.price}
@@ -62,7 +59,9 @@ export const StoreItem: React.FC<ItemProps> = ({ product, type }) => {
         <div className="storeitem-bookmark-count-block">
           <BookMarkIcon />
 
-          <div className="storeitem-bookmark-count">{product.books_count}</div>
+          <div className="storeitem-bookmark-count">
+            {product.bookmarksCount}
+          </div>
         </div>
       </div>
     </StoreItemWrapper>

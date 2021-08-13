@@ -3,11 +3,12 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { ReactComponent as OpenCloseIcon } from '../assets/icon/category/category_open_close_icon.svg';
-import { getChildCategories } from '../lib/api/category';
-import { IChildCategory, IParentCategory } from '../types/category';
+import { ICategory } from '../types/category';
+// import { getChildCategories } from '../lib/api/category';
+// import { ICategory, IParentCategory } from '../types/category';
 
 interface ISubCategoryProps {
-  categories: IChildCategory[];
+  categories: ICategory[];
   parentId: number;
 }
 
@@ -15,24 +16,24 @@ interface IStyledCategoryProps {
   isSelected: boolean;
 }
 
-const Category: React.FC<IParentCategory> = ({ id, title }) => {
-  const [childCategories, setChildCategories] = useState<IChildCategory[]>([]);
+const Category: React.FC<ICategory> = ({ id, name }) => {
+  const [childCategories, setChildCategories] = useState<ICategory[]>([]);
   const [isSelected, setIsSelected] = useState(false);
 
   const handleCategoryClicked = () => {
     setIsSelected((isSelected) => !isSelected);
   };
 
-  useEffect(() => {
-    (async () => {
-      setChildCategories(
-        await getChildCategories({
-          parent_id: id,
-          type: 'child',
-        })
-      );
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     setChildCategories(
+  //       await getChildCategories({
+  //         parent_id: id,
+  //         type: 'child',
+  //       })
+  //     );
+  //   })();
+  // }, []);
 
   return (
     <StyledCategory
@@ -41,7 +42,7 @@ const Category: React.FC<IParentCategory> = ({ id, title }) => {
       isSelected={isSelected}
     >
       <div className="category-label" id={id.toString()}>
-        {title}
+        {name}
         <OpenCloseIcon className="open-close-effect" />
       </div>
       {isSelected ? (
@@ -79,7 +80,7 @@ const SubCategory: React.FC<ISubCategoryProps> = ({ categories, parentId }) => {
                 key={category.id}
                 id={category.id.toString()}
               >
-                {category.title}
+                {category.name}
               </div>
             );
           })}
